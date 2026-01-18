@@ -22,7 +22,7 @@ export const Home = () => {
             <Button asChild className="rounded-xl bg-emerald-400 text-emerald-950 hover:bg-emerald-300">
               <Link to="/dashboard">Go to dashboard</Link>
             </Button>
-            <Button asChild variant="outline" className="rounded-xl border-white/20 text-white hover:bg-white/10">
+            <Button asChild variant="outline" className="rounded-xl border-white/20 text-black hover:bg-white/70">
               <Link to="/diet-plan">View diet plan</Link>
             </Button>
           </div>

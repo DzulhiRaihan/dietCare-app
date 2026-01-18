@@ -2,7 +2,13 @@ import { Link } from "react-router-dom";
 
 import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 
@@ -18,7 +24,8 @@ export const Login = () => {
             Take control of your nutrition with a calmer, smarter routine.
           </h1>
           <p className="text-sm text-slate-300 sm:text-base lg:text-lg">
-            Log in to access your personalized plan, track your progress, and chat with your diet assistant whenever you need guidance.
+            Log in to access your personalized plan, track your progress, and
+            chat with your diet assistant whenever you need guidance.
           </p>
           <div className="flex place-content-center gap-3">
             <Badge className="border border-emerald-400/30 bg-emerald-500/10 text-emerald-200">
@@ -33,7 +40,9 @@ export const Login = () => {
           </div>
           <div className="hidden items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-slate-300 sm:flex">
             <span className="font-semibold text-emerald-200">92%</span>
-            <span>Users stay on track after their first personalized plan.</span>
+            <span>
+              Users stay on track after their first personalized plan.
+            </span>
           </div>
         </div>
         <Card className="order-1 w-full border-white/10 bg-white/5 shadow-2xl backdrop-blur sm:max-w-md sm:justify-self-end lg:order-2">
@@ -46,7 +55,9 @@ export const Login = () => {
           <CardContent>
             <form className="space-y-5">
               <div className="space-y-2 text-slate-200">
-                <Label htmlFor="login-email" className="flex pl-1">Email address</Label>
+                <Label htmlFor="login-email" className="flex pl-1">
+                  Email address
+                </Label>
                 <Input
                   id="login-email"
                   type="email"
@@ -55,7 +66,9 @@ export const Login = () => {
                 />
               </div>
               <div className="space-y-2 text-slate-200">
-                <Label htmlFor="login-password" className="flex pl-1">Password</Label>
+                <Label htmlFor="login-password" className="flex pl-1">
+                  Password
+                </Label>
                 <Input
                   id="login-password"
                   type="password"
@@ -72,10 +85,21 @@ export const Login = () => {
               <Button className="w-full rounded-xl bg-emerald-400 px-4 py-3 text-sm font-semibold text-emerald-950 hover:bg-emerald-300">
                 Sign in
               </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="w-full rounded-xl border-white/20 text-black hover:bg-white/70"
+              >
+                <Link to="/home">Continue as Guest</Link>
+              </Button>
             </form>
             <p className="mt-6 text-center text-xs text-slate-300">
               New here?{" "}
-              <Button asChild variant="link" className="h-auto p-0 text-emerald-200">
+              <Button
+                asChild
+                variant="link"
+                className="h-auto p-0 text-emerald-200"
+              >
                 <Link to="/register">Create an account</Link>
               </Button>
             </p>
