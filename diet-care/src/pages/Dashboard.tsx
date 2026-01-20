@@ -70,7 +70,7 @@ export const Dashboard = () => {
             </div>
             <div className="flex items-center gap-3">
               <Avatar>
-                <AvatarImage src="https://i.pravatar.cc/100?img=32" alt="User avatar" />
+                <AvatarImage src="https://i.kym-cdn.com/entries/icons/original/000/048/010/side_eye_cat.jpg" alt="User avatar" />
                 <AvatarFallback className="text-slate-900">DC</AvatarFallback>
               </Avatar>
               <Button asChild variant="outline" className="border-white/20 text-black hover:bg-white/70">

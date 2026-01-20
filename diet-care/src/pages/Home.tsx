@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card";
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card";
 
 export const Home = () => {
   return (
@@ -22,9 +22,7 @@ export const Home = () => {
             <Button asChild className="rounded-xl bg-emerald-400 text-emerald-950 hover:bg-emerald-300">
               <Link to="/dashboard">Go to dashboard</Link>
             </Button>
-            <Button asChild variant="outline" className="rounded-xl border-white/20 text-black hover:bg-white/70">
-              <Link to="/diet-plan">View diet plan</Link>
-            </Button>
+        
           </div>
         </div>
         <div className="grid gap-6 md:grid-cols-3">

@@ -9,6 +9,7 @@ import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 import { Profile } from "./pages/Profile";
 import { Register } from "./pages/Register";
+import { ProgressPage } from "./pages/Progress";
 
 function App() {
   return (
@@ -18,15 +19,16 @@ function App() {
       <Route path="/home" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/chatbot" element={<Chatbot />} />
       <Route path="/dashboard" element={<Dashboard />}>
         <Route index element={<DashboardOverview />} />
         <Route path="profile" element={<Profile />} />
         <Route path="diet-plan" element={<DietPlan />} />
+        <Route path="monitoring" element={<ProgressPage />} />
+        <Route path="chatbot" element={<Chatbot />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
 
-export default App
+export default App;
