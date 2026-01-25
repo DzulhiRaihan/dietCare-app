@@ -1,3 +1,4 @@
+﻿import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Activity, Flame, Goal, Scale, Sparkles } from "lucide-react";
 
@@ -6,6 +7,10 @@ import { Button } from "../components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
 import { Progress } from "../components/ui/progress";
 import type { JSX } from "react";
+import type { DietPlan, UserProfile } from "../types";
+import { getDietPlan } from "../services/diet.service";
+import { getProfile } from "../services/user.service";
+import { useAuth } from "../hooks/useAuth";
 
 type DietStatus = "On Track" | "Off Track" | "Needs Adjustment";
 
@@ -22,70 +27,11 @@ type WeightTrendPoint = {
   value: number;
 };
 
-const overviewData = {
-  name: "Raihan",
-  status: "On Track" as DietStatus,
-  currentWeight: 74.2,
-  lastWeekChange: -0.6,
-  targetWeight: 70,
-  dailyCalories: 1480,
-  calorieTarget: 1800,
-  progressPercent: 62,
-  consistencyPercent: 86,
-  trend: [
-    { day: "Mon", value: 75.0 },
-    { day: "Tue", value: 74.8 },
-    { day: "Wed", value: 74.7 },
-    { day: "Thu", value: 74.6 },
-    { day: "Fri", value: 74.4 },
-    { day: "Sat", value: 74.3 },
-    { day: "Sun", value: 74.2 },
-  ] as WeightTrendPoint[],
-};
-
 const statusTone: Record<DietStatus, string> = {
   "On Track": "bg-emerald-400/15 text-emerald-100 border-emerald-400/30",
   "Off Track": "bg-rose-400/15 text-rose-100 border-rose-400/30",
   "Needs Adjustment": "bg-amber-400/15 text-amber-100 border-amber-400/30",
 };
-
-const metricCards: MetricCard[] = [
-  {
-    id: "current-weight",
-    title: "Current Weight",
-    value: `${overviewData.currentWeight} kg`,
-    subtitle: `${overviewData.lastWeekChange >= 0 ? "+" : ""}${overviewData.lastWeekChange} kg vs last week`,
-    icon: <Scale className="h-5 w-5 text-emerald-200" />,
-  },
-  {
-    id: "target-weight",
-    title: "Target Weight",
-    value: `${overviewData.targetWeight} kg`,
-    subtitle: `${(overviewData.currentWeight - overviewData.targetWeight).toFixed(1)} kg remaining`,
-    icon: <Goal className="h-5 w-5 text-emerald-200" />,
-  },
-  {
-    id: "today-calories",
-    title: "Today's Calories",
-    value: `${overviewData.dailyCalories} kcal`,
-    subtitle: `${overviewData.dailyCalories} / ${overviewData.calorieTarget} kcal`,
-    icon: <Flame className="h-5 w-5 text-emerald-200" />,
-  },
-  {
-    id: "diet-progress",
-    title: "Diet Progress",
-    value: `${overviewData.progressPercent}%`,
-    subtitle: "Progress toward goal",
-    icon: <Activity className="h-5 w-5 text-emerald-200" />,
-  },
-  {
-    id: "consistency",
-    title: "Consistency",
-    value: `${overviewData.consistencyPercent}%`,
-    subtitle: "Days within target",
-    icon: <Sparkles className="h-5 w-5 text-emerald-200" />,
-  },
-];
 
 const getTrendPolyline = (points: WeightTrendPoint[]) => {
   const values = points.map((point) => point.value);
@@ -103,25 +49,155 @@ const getTrendPolyline = (points: WeightTrendPoint[]) => {
 };
 
 export const DashboardOverview = () => {
-  const trendLine = getTrendPolyline(overviewData.trend);
+  const { user } = useAuth();
+  const [profile, setProfile] = useState<UserProfile | null>(null);
+  const [dietPlan, setDietPlan] = useState<DietPlan | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let mounted = true;
+    const loadData = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const [profileData, planData] = await Promise.all([
+          getProfile().catch(() => null),
+          getDietPlan().catch(() => null),
+        ]);
+
+        if (!mounted) return;
+        setProfile(profileData);
+        setDietPlan(planData);
+      } catch (err) {
+        if (mounted) {
+          setError("Unable to load dashboard data.");
+        }
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    };
+
+    loadData();
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const status: DietStatus = useMemo(() => {
+    if (!profile || !dietPlan) return "Needs Adjustment";
+    if (profile.profileCompleted) return "On Track";
+    return "Needs Adjustment";
+  }, [dietPlan, profile]);
+
+  const metricCards: MetricCard[] = useMemo(() => {
+    const currentWeight = profile?.currentWeightKg;
+    const targetWeight = dietPlan?.targetWeight ?? null;
+    const calorieTarget = dietPlan?.dailyCalorieTarget ?? null;
+    const planType = dietPlan?.planType ?? null;
+
+    const remainingText =
+      currentWeight !== null && currentWeight !== undefined && targetWeight
+        ? `${Math.abs(currentWeight - targetWeight).toFixed(1)} kg remaining`
+        : "Add a target weight";
+
+    const calorieSubtitle = calorieTarget
+      ? `Daily target ${calorieTarget} kcal`
+      : "Create a diet plan";
+
+    const dietProgress = profile?.profileCompleted ? 80 : 35;
+
+    return [
+      {
+        id: "current-weight",
+        title: "Current Weight",
+        value: currentWeight ? `${currentWeight.toFixed(1)} kg` : "--",
+        subtitle: "Latest saved profile weight",
+        icon: <Scale className="h-5 w-5 text-emerald-200" />,
+      },
+      {
+        id: "target-weight",
+        title: "Target Weight",
+        value: targetWeight ? `${targetWeight.toFixed(1)} kg` : "--",
+        subtitle: remainingText,
+        icon: <Goal className="h-5 w-5 text-emerald-200" />,
+      },
+      {
+        id: "today-calories",
+        title: "Daily Calories",
+        value: calorieTarget ? `${calorieTarget} kcal` : "--",
+        subtitle: calorieSubtitle,
+        icon: <Flame className="h-5 w-5 text-emerald-200" />,
+      },
+      {
+        id: "diet-progress",
+        title: "Diet Progress",
+        value: `${dietProgress}%`,
+        subtitle: planType ? `Plan: ${planType}` : "Complete your profile",
+        icon: <Activity className="h-5 w-5 text-emerald-200" />,
+      },
+      {
+        id: "consistency",
+        title: "Consistency",
+        value: profile?.profileCompleted ? "Good" : "Low",
+        subtitle: profile?.profileCompleted ? "Profile complete" : "Fill in your profile",
+        icon: <Sparkles className="h-5 w-5 text-emerald-200" />,
+      },
+    ];
+  }, [dietPlan, profile]);
+
+  const trendData: WeightTrendPoint[] = useMemo(() => {
+    if (!profile?.currentWeightKg) return [];
+    return [
+      { day: "Mon", value: profile.currentWeightKg + 1.0 },
+      { day: "Tue", value: profile.currentWeightKg + 0.8 },
+      { day: "Wed", value: profile.currentWeightKg + 0.6 },
+      { day: "Thu", value: profile.currentWeightKg + 0.4 },
+      { day: "Fri", value: profile.currentWeightKg + 0.3 },
+      { day: "Sat", value: profile.currentWeightKg + 0.2 },
+      { day: "Sun", value: profile.currentWeightKg },
+    ];
+  }, [profile?.currentWeightKg]);
+
+  const trendLine = trendData.length ? getTrendPolyline(trendData) : "";
+
+  if (loading) {
+    return (
+      <section className="space-y-4">
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-200">
+          Dashboard Overview
+        </p>
+        <p className="text-sm text-slate-300">Loading dashboard...</p>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="space-y-4">
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-200">
+          Dashboard Overview
+        </p>
+        <p className="text-sm text-rose-300">{error}</p>
+      </section>
+    );
+  }
 
   return (
     <section className="space-y-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-200">
-            Dashboard Overview
-          </p>
+      <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-200">
+        Dashboard Overview
+      </p>
       <header className="flex flex-wrap items-start justify-between gap-4">
         <div className="space-y-2">
-          <h1 className="text-3xl font-semibold text-white md:text-4xl flex">
-            Welcome back, {overviewData.name} 👋
+          <h1 className="flex text-3xl font-semibold text-white md:text-4xl">
+            Welcome back, {user?.name ?? "friend"} 👋
           </h1>
           <p className="text-sm text-slate-300 md:text-base">
             Here's your current diet status and recommended next steps.
           </p>
         </div>
-        <Badge className={`border ${statusTone[overviewData.status]}`}>
-          {overviewData.status}
-        </Badge>
+        <Badge className={`border ${statusTone[status]}`}>{status}</Badge>
       </header>
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -142,10 +218,10 @@ export const DashboardOverview = () => {
                 <div className="mt-3 space-y-2">
                   <div className="flex items-center justify-between text-xs text-slate-300">
                     <span>Goal progress</span>
-                    <span>{overviewData.progressPercent}%</span>
+                    <span>{metric.value}</span>
                   </div>
                   <Progress
-                    value={overviewData.progressPercent}
+                    value={Number(metric.value.replace("%", ""))}
                     className="h-2 bg-white/10"
                     indicatorClassName="bg-emerald-400"
                   />
@@ -163,15 +239,15 @@ export const DashboardOverview = () => {
             Complete these tasks to stay on track today.
           </CardDescription>
         </CardHeader>
-        <CardContent className="flex flex-wrap gap-3 justify-center">
+        <CardContent className="flex flex-wrap justify-center gap-3">
           <Button asChild className="rounded-xl bg-emerald-400 text-emerald-950 hover:bg-emerald-300">
-            <Link to="/dashboard/monitoring">Log Today's Weight</Link>
+            <Link to="/dashboard/profile">Update Profile</Link>
           </Button>
           <Button asChild variant="outline" className="rounded-xl border-white/20 text-black hover:bg-white/70">
-            <Link to="/dashboard/diet-plan">Log Today's Meals</Link>
+            <Link to="/dashboard/diet-plan">View Diet Plan</Link>
           </Button>
           <Button asChild variant="outline" className="rounded-xl border-white/20 text-black hover:bg-white/70">
-            <Link to="/dashboard/chatbot">Consult AI</Link>
+            <Link to="/dashboard/chatbot">Consult Chat</Link>
           </Button>
         </CardContent>
       </Card>
@@ -181,46 +257,51 @@ export const DashboardOverview = () => {
           <CardHeader>
             <CardTitle className="text-white">Weight trend (7 days)</CardTitle>
             <CardDescription className="text-slate-300">
-              Small progress adds up over time.
+              Save weight logs to track progress.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <svg viewBox="0 0 100 100" className="h-48 w-full">
-                <polyline
-                  fill="none"
-                  stroke="#34d399"
-                  strokeWidth="3"
-                  points={trendLine}
-                />
-                <circle cx="100" cy="20" r="4" fill="#34d399" />
-              </svg>
-              <div className="mt-3 flex justify-between text-xs text-slate-300">
-                {overviewData.trend.map((point) => (
-                  <span key={point.day}>{point.day}</span>
-                ))}
+            {trendData.length ? (
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <svg viewBox="0 0 100 100" className="h-48 w-full">
+                  <polyline fill="none" stroke="#34d399" strokeWidth="3" points={trendLine} />
+                  <circle cx="100" cy="20" r="4" fill="#34d399" />
+                </svg>
+                <div className="mt-3 flex justify-between text-xs text-slate-300">
+                  {trendData.map((point) => (
+                    <span key={point.day}>{point.day}</span>
+                  ))}
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-sm text-slate-300">
+                Add your current weight in the profile to view trends.
+              </div>
+            )}
             <div className="flex items-center justify-between text-sm text-slate-300">
               <span>Weekly change</span>
-              <span className="text-emerald-200">-0.8 kg</span>
+              <span className="text-emerald-200">--</span>
             </div>
           </CardContent>
         </Card>
 
         <Card className="border-white/10 bg-slate-950/40">
           <CardHeader>
-            <CardTitle className="text-white">AI insight</CardTitle>
+            <CardTitle className="text-white">Diet insight</CardTitle>
             <CardDescription className="text-slate-300">
-              Guidance based on recent trends.
+              Guidance based on your current plan.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-3 text-sm text-slate-300">
             <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-              You're doing great! Keep maintaining your calorie target.
+              {dietPlan?.planType
+                ? `Your plan is set to ${dietPlan.planType.toLowerCase()}. Stay consistent.`
+                : "Create a diet plan to get tailored recommendations."}
             </div>
             <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-              Try to stay consistent on weekends to keep the momentum.
+              {profile?.profileCompleted
+                ? "Profile complete. Update weight regularly for best accuracy."
+                : "Complete your profile to unlock full recommendations."}
             </div>
           </CardContent>
         </Card>

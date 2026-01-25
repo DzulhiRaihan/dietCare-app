@@ -67,9 +67,9 @@ model UserProfile {
   gender           String?
   birthDate        DateTime?
   heightCm         Int?
+  currentWeightKg  Float?
   activityLevel    ActivityLevel?
   dietGoal         DietGoal?
-  targetWeight     Float?
   profileCompleted Boolean       @default(false)
   updatedAt        DateTime      @updatedAt
 
@@ -99,6 +99,7 @@ model DietPlan {
   proteinTarget        Int?
   carbsTarget          Int?
   fatTarget            Int?
+  targetWeight         Float?
   planType             PlanType
   isActive             Boolean           @default(true)
   createdAt            DateTime          @default(now())

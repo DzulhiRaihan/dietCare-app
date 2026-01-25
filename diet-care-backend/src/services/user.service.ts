@@ -6,9 +6,9 @@ export type UserProfilePayload = {
   gender?: string | null;
   birthDate?: string | Date | null;
   heightCm?: number | null;
+  currentWeightKg?: number | null;
   activityLevel?: ActivityLevel | string | null;
   dietGoal?: DietGoal | string | null;
-  targetWeight?: number | null;
   profileCompleted?: boolean | null;
 };
 
@@ -61,12 +61,12 @@ const buildProfileData = (input: UserProfilePayload): Omit<Prisma.UserProfileUnc
   if (birthDate !== undefined) data.birthDate = birthDate;
   const heightCm = parseNumber(input.heightCm, "heightCm");
   if (heightCm !== undefined) data.heightCm = heightCm;
+  const currentWeightKg = parseNumber(input.currentWeightKg, "currentWeightKg");
+  if (currentWeightKg !== undefined) data.currentWeightKg = currentWeightKg;
   const activityLevel = parseEnum(input.activityLevel, Object.values(ActivityLevel), "activityLevel");
   if (activityLevel !== undefined) data.activityLevel = activityLevel;
   const dietGoal = parseEnum(input.dietGoal, Object.values(DietGoal), "dietGoal");
   if (dietGoal !== undefined) data.dietGoal = dietGoal;
-  const targetWeight = parseNumber(input.targetWeight, "targetWeight");
-  if (targetWeight !== undefined) data.targetWeight = targetWeight;
   const profileCompleted = parseBoolean(input.profileCompleted, "profileCompleted");
   if (profileCompleted !== undefined && profileCompleted !== null) data.profileCompleted = profileCompleted;
 
@@ -81,12 +81,12 @@ const buildProfileUpdateData = (input: UserProfilePayload): Prisma.UserProfileUp
   if (birthDate !== undefined) data.birthDate = birthDate;
   const heightCm = parseNumber(input.heightCm, "heightCm");
   if (heightCm !== undefined) data.heightCm = heightCm;
+  const currentWeightKg = parseNumber(input.currentWeightKg, "currentWeightKg");
+  if (currentWeightKg !== undefined) data.currentWeightKg = currentWeightKg;
   const activityLevel = parseEnum(input.activityLevel, Object.values(ActivityLevel), "activityLevel");
   if (activityLevel !== undefined) data.activityLevel = activityLevel;
   const dietGoal = parseEnum(input.dietGoal, Object.values(DietGoal), "dietGoal");
   if (dietGoal !== undefined) data.dietGoal = dietGoal;
-  const targetWeight = parseNumber(input.targetWeight, "targetWeight");
-  if (targetWeight !== undefined) data.targetWeight = targetWeight;
   const profileCompleted = parseBoolean(input.profileCompleted, "profileCompleted");
   if (profileCompleted !== undefined && profileCompleted !== null) data.profileCompleted = profileCompleted;
 

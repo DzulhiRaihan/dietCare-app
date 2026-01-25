@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+﻿import { Navigate, Route, Routes } from "react-router-dom";
 
 import "./App.css";
 import { Chatbot } from "./pages/Chatbot";
@@ -10,6 +10,7 @@ import { Login } from "./pages/Login";
 import { Profile } from "./pages/Profile";
 import { Register } from "./pages/Register";
 import { ProgressPage } from "./pages/Progress";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -19,7 +20,14 @@ function App() {
       <Route path="/home" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/dashboard" element={<Dashboard />}>
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }
+      >
         <Route index element={<DashboardOverview />} />
         <Route path="profile" element={<Profile />} />
         <Route path="diet-plan" element={<DietPlan />} />

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Bot, SendHorizontal } from "lucide-react";
 
@@ -6,48 +6,8 @@ import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
 import { Input } from "../components/ui/input";
-
-type MessageRole = "user" | "assistant" | "system";
-
-type ChatMessage = {
-  id: string;
-  role: MessageRole;
-  content: string;
-  time?: string;
-};
-
-type UserContext = {
-  calorieTarget: number;
-  latestWeight: number;
-  status: "On Track" | "Off Track" | "Needs Adjustment";
-};
-
-const initialMessages: ChatMessage[] = [
-  {
-    id: "system-1",
-    role: "system",
-    content: "Tip: Ask about meal swaps, calorie targets, or macro balance.",
-    time: "08:30",
-  },
-  {
-    id: "assistant-1",
-    role: "assistant",
-    content: "Hi Alex! How can I help with your diet today?",
-    time: "08:31",
-  },
-  {
-    id: "user-1",
-    role: "user",
-    content: "Is my diet on track this week?",
-    time: "08:31",
-  },
-  {
-    id: "assistant-2",
-    role: "assistant",
-    content: "You are doing well. You are within 5% of your calorie target on most days.",
-    time: "08:32",
-  },
-];
+import type { ChatMessage, ChatRole } from "../types";
+import { createSession, getHistory, sendMessage } from "../services/chat.service";
 
 const suggestedPrompts = [
   "What should I eat today?",
@@ -56,85 +16,117 @@ const suggestedPrompts = [
   "Is my diet on track?",
 ];
 
-const assistantReplies = [
-  "Based on your recent logs, try adding a protein-rich snack in the afternoon.",
-  "A small calorie deficit with consistent sleep helps improve progress.",
-  "You can swap dinner with a lighter option and keep your protein stable.",
-  "You're mostly on track. Focus on hydration and weekend consistency.",
-];
-
-const userContext: UserContext = {
+const userContext = {
   calorieTarget: 1800,
   latestWeight: 74.2,
-  status: "On Track",
+  status: "On Track" as const,
 };
 
-const statusTone: Record<UserContext["status"], string> = {
+const statusTone: Record<typeof userContext.status, string> = {
   "On Track": "bg-emerald-400/15 text-emerald-100 border-emerald-400/30",
-  "Off Track": "bg-rose-400/15 text-rose-100 border-rose-400/30",
-  "Needs Adjustment": "bg-amber-400/15 text-amber-100 border-amber-400/30",
 };
+
+const formatRole = (role: ChatRole) => role.toLowerCase();
 
 export const Chatbot = () => {
-  const [messages, setMessages] = useState<ChatMessage[]>(initialMessages);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [sessionId, setSessionId] = useState<string | null>(
+    () => localStorage.getItem("chat_session_id")
+  );
+  const [error, setError] = useState<string | null>(null);
 
   const emptyState = useMemo(() => messages.length === 0, [messages.length]);
 
-  const pushAssistantReply = (content: string) => {
-    const reply: ChatMessage = {
-      id: `assistant-${Date.now()}`,
-      role: "assistant",
-      content,
-      time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-    };
-    setMessages((prev) => [...prev, reply]);
+  const loadHistory = async (activeSessionId: string) => {
+    const history = await getHistory(activeSessionId);
+    setMessages(history);
   };
 
-  const handleSend = (text: string) => {
+  const ensureSession = async () => {
+    if (sessionId) return sessionId;
+    const session = await createSession();
+    localStorage.setItem("chat_session_id", session.sessionId);
+    setSessionId(session.sessionId);
+    return session.sessionId;
+  };
+
+  const startNewSession = async () => {
+    setMessages([]);
+    setError(null);
+    const session = await createSession();
+    localStorage.setItem("chat_session_id", session.sessionId);
+    setSessionId(session.sessionId);
+    await loadHistory(session.sessionId);
+  };
+
+  useEffect(() => {
+    if (!sessionId) return;
+    loadHistory(sessionId).catch(() => {
+      setError("Unable to load history.");
+    });
+  }, [sessionId]);
+
+  const handleSend = async (text: string) => {
     const trimmed = text.trim();
     if (!trimmed || isTyping) return;
 
-    const message: ChatMessage = {
-      id: `user-${Date.now()}`,
-      role: "user",
-      content: trimmed,
-      time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-    };
-
-    setMessages((prev) => [...prev, message]);
-    setInput("");
     setIsTyping(true);
+    setError(null);
 
-    const reply = assistantReplies[Math.floor(Math.random() * assistantReplies.length)];
-    window.setTimeout(() => {
-      pushAssistantReply(reply);
+    try {
+      const activeSessionId = await ensureSession();
+      const response = await sendMessage({ sessionId: activeSessionId, content: trimmed });
+      setMessages((prev) => [...prev, response.userMessage, response.assistantMessage]);
+      setInput("");
+    } catch (err) {
+      setError("Unable to send message. Please try again.");
+    } finally {
       setIsTyping(false);
-    }, 900);
+    }
+  };
+
+  const handleLoadHistory = async () => {
+    if (!sessionId) return;
+    try {
+      await loadHistory(sessionId);
+    } catch (err) {
+      setError("Unable to load history.");
+    }
   };
 
   return (
     <section className="space-y-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-200">
-            Diet Consultation Chatbot
-          </p>
+      <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-200">
+        Diet Consultation Chatbot
+      </p>
       <header className="flex flex-wrap items-start justify-between gap-4">
         <div className="space-y-2">
           <h1 className="text-3xl font-semibold text-white md:text-4xl">
             Diet Consultation Chatbot
           </h1>
-          <p className="text-sm text-slate-300 md:text-base flex">
+          <p className="flex text-sm text-slate-300 md:text-base">
             Ask anything about your diet and nutrition.
           </p>
         </div>
-        <Button
-          variant="outline"
-          className="border-white/20 text-black hover:bg-white/70"
-          onClick={() => setMessages([])}
-        >
-          New conversation
-        </Button>
+        <div className="flex flex-wrap gap-2">
+          <Button
+            variant="outline"
+            className="border-white/20 text-black hover:bg-white/70"
+            onClick={startNewSession}
+          >
+            New conversation
+          </Button>
+          <Button
+            variant="outline"
+            className="border-white/20 text-black hover:bg-white/70"
+            onClick={handleLoadHistory}
+            disabled={!sessionId}
+          >
+            Load history
+          </Button>
+        </div>
       </header>
 
       <div className="grid gap-6 xl:grid-cols-[1.4fr_0.6fr]">
@@ -175,24 +167,21 @@ export const Chatbot = () => {
                 {messages.map((message) => (
                   <div
                     key={message.id}
-                    className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
+                    className={`flex ${message.role === "USER" ? "justify-end" : "justify-start"}`}
                   >
                     <div
                       className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm shadow-sm ${
-                        message.role === "user"
+                        message.role === "USER"
                           ? "bg-emerald-400/20 text-emerald-100"
-                          : message.role === "assistant"
+                          : message.role === "ASSISTANT"
                           ? "bg-white/10 text-slate-100"
                           : "bg-slate-900/60 text-slate-300"
                       }`}
                     >
                       <div className="flex items-center justify-between gap-2">
                         <p className="text-xs uppercase tracking-[0.2em] text-slate-400">
-                          {message.role}
+                          {formatRole(message.role)}
                         </p>
-                        {message.time && (
-                          <span className="text-[10px] text-slate-400">{message.time}</span>
-                        )}
                       </div>
                       <p className="mt-2 leading-relaxed">{message.content}</p>
                     </div>
@@ -231,7 +220,8 @@ export const Chatbot = () => {
                   Send
                 </Button>
               </div>
-              {isTyping && <p className="text-xs text-slate-400">AI is typing...</p>}
+              {isTyping && <p className="text-xs text-slate-400">Assistant is typing...</p>}
+              {error && <p className="text-xs text-rose-300">{error}</p>}
             </div>
           </CardContent>
         </Card>

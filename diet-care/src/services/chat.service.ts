@@ -1,16 +1,21 @@
-import type { AxiosResponse } from "axios";
+﻿import api from "./api";
+import type { ChatMessage, ChatSession, ChatMessagePayload, ChatMessageResponse } from "../types";
 
-import api from "./api";
-import type { ChatMessage } from "../types";
-
-type ChatPayload = {
-  message: string;
+export const createSession = async (): Promise<ChatSession> => {
+  const response = await api.post<ChatSession>("/chat/session");
+  return response.data;
 };
 
-type ChatResponse = {
-  messages: ChatMessage[];
+export const sendMessage = async (
+  payload: ChatMessagePayload
+): Promise<ChatMessageResponse> => {
+  const response = await api.post<ChatMessageResponse>("/chat/message", payload);
+  return response.data;
 };
 
-export const sendMessage = (
-  payload: ChatPayload
-): Promise<AxiosResponse<ChatResponse>> => api.post("/chat", payload);
+export const getHistory = async (sessionId: string): Promise<ChatMessage[]> => {
+  const response = await api.get<{ sessionId: string; messages: ChatMessage[] }>(
+    `/chat/history/${sessionId}`
+  );
+  return response.data.messages;
+};

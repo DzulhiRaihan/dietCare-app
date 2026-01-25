@@ -1,6 +1,7 @@
-import axios, { AxiosInstance } from "axios";
+﻿import axios, { AxiosError, type AxiosInstance } from "axios";
+import { useAuthStore } from "../store/auth.store";
 
-const apiBaseUrl = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:3000";
+const apiBaseUrl = import.meta.env.VITE_API_URL ?? "http://localhost:3000";
 
 const api: AxiosInstance = axios.create({
   baseURL: apiBaseUrl,
@@ -18,5 +19,18 @@ api.interceptors.request.use((config) => {
   }
   return config;
 });
+
+api.interceptors.response.use(
+  (response) => response,
+  (error: AxiosError) => {
+    if (error.response?.status === 401) {
+      useAuthStore.getState().clearAuth();
+      if (window.location.pathname !== "/login") {
+        window.location.href = "/login";
+      }
+    }
+    return Promise.reject(error);
+  }
+);
 
 export default api;

@@ -1,11 +1,10 @@
-import type { AxiosResponse } from "axios";
-
-import api from "./api";
+﻿import api from "./api";
 import type { User } from "../types";
 
 type AuthPayload = {
   email: string;
   password: string;
+  name?: string;
 };
 
 type AuthResponse = {
@@ -13,8 +12,12 @@ type AuthResponse = {
   token: string;
 };
 
-export const login = (payload: AuthPayload): Promise<AxiosResponse<AuthResponse>> =>
-  api.post("/auth/login", payload);
+export const login = async (payload: AuthPayload): Promise<AuthResponse> => {
+  const response = await api.post<AuthResponse>("/auth/login", payload);
+  return response.data;
+};
 
-export const register = (payload: AuthPayload): Promise<AxiosResponse<AuthResponse>> =>
-  api.post("/auth/register", payload);
+export const register = async (payload: AuthPayload): Promise<AuthResponse> => {
+  const response = await api.post<AuthResponse>("/auth/register", payload);
+  return response.data;
+};

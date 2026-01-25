@@ -1,0 +1,122 @@
+﻿import { ActivityLevel, DietGoal, PlanType } from "@prisma/client";
+import { HttpError } from "../utils/http-error.js";
+import { userRepo } from "../repositories/index.js";
+import * as dietPlanRepo from "../repositories/diet-plan.repository.js";
+
+export type CreateDietPlanPayload = {
+  targetWeight?: number | null;
+};
+
+const activityMultiplier: Record<ActivityLevel, number> = {
+  LOW: 1.2,
+  MEDIUM: 1.55,
+  HIGH: 1.725,
+};
+
+const goalAdjustments: Record<DietGoal, number> = {
+  LOSE: -500,
+  MAINTAIN: 0,
+  GAIN: 300,
+};
+
+const goalPlanType: Record<DietGoal, PlanType> = {
+  LOSE: PlanType.DEFICIT,
+  MAINTAIN: PlanType.MAINTENANCE,
+  GAIN: PlanType.SURPLUS,
+};
+
+const proteinMultiplier: Record<DietGoal, number> = {
+  LOSE: 1.6,
+  MAINTAIN: 1.4,
+  GAIN: 1.8,
+};
+
+const normalizeGender = (value?: string | null) => {
+  if (!value) return null;
+  const normalized = value.trim().toLowerCase();
+  if (["male", "m", "man"].includes(normalized)) return "male";
+  if (["female", "f", "woman", "girl"].includes(normalized)) return "female";
+  return null;
+};
+
+const calculateAge = (birthDate: Date) => {
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+    age -= 1;
+  }
+  return age;
+};
+
+const clampCalories = (calories: number, gender: "male" | "female") => {
+  const min = gender === "male" ? 1500 : 1200;
+  return Math.max(min, Math.round(calories));
+};
+
+export const createDietPlan = async (userId: string, payload: CreateDietPlanPayload = {}) => {
+  const profile = await userRepo.findProfileByUserId(userId);
+  if (!profile) {
+    throw new HttpError(404, "Profile not found");
+  }
+
+  const gender = normalizeGender(profile.gender);
+  if (!gender) {
+    throw new HttpError(400, "Gender is required to calculate diet plan");
+  }
+  if (!profile.birthDate) {
+    throw new HttpError(400, "Birth date is required to calculate diet plan");
+  }
+  if (!profile.heightCm) {
+    throw new HttpError(400, "Height is required to calculate diet plan");
+  }
+  if (!profile.currentWeightKg) {
+    throw new HttpError(400, "Current weight is required to calculate diet plan");
+  }
+  if (!profile.activityLevel) {
+    throw new HttpError(400, "Activity level is required to calculate diet plan");
+  }
+  if (!profile.dietGoal) {
+    throw new HttpError(400, "Diet goal is required to calculate diet plan");
+  }
+
+  const age = calculateAge(profile.birthDate);
+  const bmr =
+    gender === "male"
+      ? 10 * profile.currentWeightKg + 6.25 * profile.heightCm - 5 * age + 5
+      : 10 * profile.currentWeightKg + 6.25 * profile.heightCm - 5 * age - 161;
+
+  const tdee = bmr * activityMultiplier[profile.activityLevel];
+  const targetCalories = clampCalories(
+    tdee + goalAdjustments[profile.dietGoal],
+    gender
+  );
+
+  const proteinTarget = Math.round(profile.currentWeightKg * proteinMultiplier[profile.dietGoal]);
+  const fatTarget = Math.round(profile.currentWeightKg * 0.8);
+  const remainingCalories = targetCalories - proteinTarget * 4 - fatTarget * 9;
+  const carbsTarget = Math.max(0, Math.round(remainingCalories / 4));
+
+  await dietPlanRepo.deactivatePlansByUserId(userId);
+
+  const plan = await dietPlanRepo.createPlan({
+    user: { connect: { id: userId } },
+    dailyCalorieTarget: targetCalories,
+    proteinTarget,
+    carbsTarget,
+    fatTarget,
+    planType: goalPlanType[profile.dietGoal],
+    targetWeight: payload.targetWeight ?? null,
+    isActive: true,
+  });
+
+  return { plan };
+};
+
+export const getActiveDietPlan = async (userId: string) => {
+  const plan = await dietPlanRepo.findActivePlanByUserId(userId);
+  if (!plan) {
+    throw new HttpError(404, "Diet plan not found");
+  }
+  return { plan };
+};

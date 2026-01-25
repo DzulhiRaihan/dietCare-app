@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+﻿import { type FormEvent, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
@@ -11,8 +12,32 @@ import {
 } from "../components/ui/card";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
+import { login as loginService } from "../services/auth.service";
+import { useAuth } from "../hooks/useAuth";
 
 export const Login = () => {
+  const navigate = useNavigate();
+  const { setAuth } = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await loginService({ email, password });
+      setAuth(data.user, data.token);
+      navigate("/dashboard", { replace: true });
+    } catch (err) {
+      setError("Invalid email or password.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <main className="flex min-h-screen items-center justify-center bg-linear-to-b from-slate-950 via-slate-900 to-emerald-950 text-slate-100">
       <section className="mx-auto grid w-full max-w-6xl items-center gap-10 px-6 py-10 lg:grid-cols-[1.1fr_0.9fr]">
@@ -53,7 +78,7 @@ export const Login = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form className="space-y-5">
+            <form className="space-y-5" onSubmit={handleSubmit}>
               <div className="space-y-2 text-slate-200">
                 <Label htmlFor="login-email" className="flex pl-1">
                   Email address
@@ -63,6 +88,9 @@ export const Login = () => {
                   type="email"
                   placeholder="you@example.com"
                   className="border-white/10 bg-slate-950/40 text-white placeholder:text-slate-400"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  required
                 />
               </div>
               <div className="space-y-2 text-slate-200">
@@ -74,6 +102,9 @@ export const Login = () => {
                   type="password"
                   placeholder="********"
                   className="border-white/10 bg-slate-950/40 text-white placeholder:text-slate-400"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  required
                 />
               </div>
               <div className="flex flex-col gap-3 text-xs text-slate-300 sm:flex-row sm:items-center sm:justify-between">
@@ -82,8 +113,12 @@ export const Login = () => {
                   Forgot password?
                 </Button>
               </div>
-              <Button className="w-full rounded-xl bg-emerald-400 px-4 py-3 text-sm font-semibold text-emerald-950 hover:bg-emerald-300">
-                Sign in
+              {error && <p className="text-xs text-rose-300">{error}</p>}
+              <Button
+                className="w-full rounded-xl bg-emerald-400 px-4 py-3 text-sm font-semibold text-emerald-950 hover:bg-emerald-300"
+                disabled={loading}
+              >
+                {loading ? "Signing in..." : "Sign in"}
               </Button>
               <Button
                 asChild

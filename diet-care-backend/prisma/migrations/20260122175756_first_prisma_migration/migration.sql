@@ -1,3 +1,6 @@
+-- Enable pgvector for embedding support
+CREATE EXTENSION IF NOT EXISTS vector;
+
 -- CreateEnum
 CREATE TYPE "DietGoal" AS ENUM ('LOSE', 'MAINTAIN', 'GAIN');
 
