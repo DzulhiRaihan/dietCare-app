@@ -1,5 +1,6 @@
 ﻿import { Router } from "express";
 import { optionalJwtMiddleware } from "../middlewares/jwt.middleware.js";
+import { csrfMiddleware } from "../middlewares/csrf.middleware.js";
 import {
   createSessionController,
   createMessageController,
@@ -9,6 +10,7 @@ import {
 const router = Router();
 
 router.use(optionalJwtMiddleware);
+router.use(csrfMiddleware);
 
 router.post("/session", createSessionController);
 router.post("/message", createMessageController);

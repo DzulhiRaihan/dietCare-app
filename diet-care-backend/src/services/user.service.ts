@@ -7,6 +7,7 @@ export type UserProfilePayload = {
   birthDate?: string | Date | null;
   heightCm?: number | null;
   currentWeightKg?: number | null;
+  bmiCurrent?: number | null;
   activityLevel?: ActivityLevel | string | null;
   dietGoal?: DietGoal | string | null;
   profileCompleted?: boolean | null;
@@ -53,6 +54,13 @@ const parseBoolean = (value: boolean | null | undefined, field: string): boolean
   return value;
 };
 
+const computeBmi = (heightCm?: number | null, weightKg?: number | null): number | null => {
+  if (!heightCm || !weightKg) return null;
+  const heightM = heightCm / 100;
+  const bmi = weightKg / (heightM * heightM);
+  return Math.round(bmi * 10) / 10;
+};
+
 const buildProfileData = (input: UserProfilePayload): Omit<Prisma.UserProfileUncheckedCreateInput, "userId"> => {
   const data: Omit<Prisma.UserProfileUncheckedCreateInput, "userId"> = {};
 
@@ -63,6 +71,9 @@ const buildProfileData = (input: UserProfilePayload): Omit<Prisma.UserProfileUnc
   if (heightCm !== undefined) data.heightCm = heightCm;
   const currentWeightKg = parseNumber(input.currentWeightKg, "currentWeightKg");
   if (currentWeightKg !== undefined) data.currentWeightKg = currentWeightKg;
+  if (heightCm !== undefined || currentWeightKg !== undefined) {
+    data.bmiCurrent = computeBmi(heightCm ?? null, currentWeightKg ?? null);
+  }
   const activityLevel = parseEnum(input.activityLevel, Object.values(ActivityLevel), "activityLevel");
   if (activityLevel !== undefined) data.activityLevel = activityLevel;
   const dietGoal = parseEnum(input.dietGoal, Object.values(DietGoal), "dietGoal");
@@ -83,6 +94,11 @@ const buildProfileUpdateData = (input: UserProfilePayload): Prisma.UserProfileUp
   if (heightCm !== undefined) data.heightCm = heightCm;
   const currentWeightKg = parseNumber(input.currentWeightKg, "currentWeightKg");
   if (currentWeightKg !== undefined) data.currentWeightKg = currentWeightKg;
+  if (heightCm !== undefined || currentWeightKg !== undefined) {
+    const nextHeight = heightCm ?? null;
+    const nextWeight = currentWeightKg ?? null;
+    data.bmiCurrent = computeBmi(nextHeight, nextWeight);
+  }
   const activityLevel = parseEnum(input.activityLevel, Object.values(ActivityLevel), "activityLevel");
   if (activityLevel !== undefined) data.activityLevel = activityLevel;
   const dietGoal = parseEnum(input.dietGoal, Object.values(DietGoal), "dietGoal");

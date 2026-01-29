@@ -11,7 +11,15 @@ export type UserProfile = {
   birthDate?: string | null;
   heightCm?: number | null;
   currentWeightKg?: number | null;
-  activityLevel?: "LOW" | "MEDIUM" | "HIGH" | null;
+  bmiCurrent?: number | null;
+  activityLevel?:
+    | "SEDENTARY"
+    | "LIGHT"
+    | "MODERATE"
+    | "ACTIVE"
+    | "VERY_ACTIVE"
+    | "EXTRA_ACTIVE"
+    | null;
   dietGoal?: "LOSE" | "MAINTAIN" | "GAIN" | null;
   profileCompleted?: boolean | null;
   updatedAt?: string;
@@ -49,6 +57,7 @@ export type DietPlan = {
   carbsTarget?: number | null;
   fatTarget?: number | null;
   targetWeight?: number | null;
+  targetBmi?: number | null;
   planType?: "DEFICIT" | "MAINTENANCE" | "SURPLUS";
   isActive?: boolean;
   createdAt?: string;

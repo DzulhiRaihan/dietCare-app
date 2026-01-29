@@ -1,17 +1,44 @@
 ﻿import { useEffect, useMemo, useState } from "react";
+import { format } from "date-fns";
+import { CalendarIcon, ChevronDown } from "lucide-react";
 
 import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../components/ui/dropdown-menu";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "../components/ui/popover";
+import { Calendar } from "../components/ui/calendar";
 import type { UserProfile } from "../types";
-import { createProfile, getProfile, updateProfile } from "../services/user.service";
+import {
+  createProfile,
+  getProfile,
+  updateProfile,
+} from "../services/user.service";
 
 const activityOptions = [
-  { label: "Low", value: "LOW" },
-  { label: "Medium", value: "MEDIUM" },
-  { label: "High", value: "HIGH" },
+  { label: "Sedentary (little or no exercise)", value: "SEDENTARY" },
+  { label: "Light (1-3 days/week)", value: "LIGHT" },
+  { label: "Moderate (3-5 days/week)", value: "MODERATE" },
+  { label: "Active (6-7 days/week)", value: "ACTIVE" },
+  { label: "Very active (hard exercise)", value: "VERY_ACTIVE" },
+  { label: "Extra active (physical job + training)", value: "EXTRA_ACTIVE" },
 ];
 
 const goalOptions = [
@@ -20,14 +47,33 @@ const goalOptions = [
   { label: "Gain", value: "GAIN" },
 ];
 
+const genderOptions = [
+  { label: "Male", value: "male" },
+  { label: "Female", value: "female" },
+  { label: "Other", value: "other" },
+];
+
+const completedOptions = [
+  { label: "No", value: false },
+  { label: "Yes", value: true },
+];
+
 const emptyProfile: UserProfile = {
   gender: "",
   birthDate: "",
   heightCm: null,
   currentWeightKg: null,
+  bmiCurrent: null,
   activityLevel: null,
   dietGoal: null,
   profileCompleted: false,
+};
+
+const parseBirthDate = (value: string | null | undefined) => {
+  if (!value) return undefined;
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return undefined;
+  return date;
 };
 
 export const Profile = () => {
@@ -72,7 +118,10 @@ export const Profile = () => {
     return "Completed";
   }, [profile.profileCompleted]);
 
-  const handleChange = (field: keyof UserProfile, value: string | number | boolean | null) => {
+  const handleChange = (
+    field: keyof UserProfile,
+    value: string | number | boolean | null,
+  ) => {
     setProfile((prev) => ({
       ...prev,
       [field]: value,
@@ -94,7 +143,9 @@ export const Profile = () => {
     };
 
     try {
-      const data = exists ? await updateProfile(payload) : await createProfile(payload);
+      const data = exists
+        ? await updateProfile(payload)
+        : await createProfile(payload);
       setProfile({
         ...emptyProfile,
         ...data,
@@ -107,6 +158,20 @@ export const Profile = () => {
       setSaving(false);
     }
   };
+
+  const selectedGender =
+    genderOptions.find((option) => option.value === profile.gender)?.label ??
+    "Select";
+  const selectedActivity =
+    activityOptions.find((option) => option.value === profile.activityLevel)
+      ?.label ?? "Select activity";
+  const selectedGoal =
+    goalOptions.find((option) => option.value === profile.dietGoal)?.label ??
+    "Select goal";
+  const selectedCompleted =
+    completedOptions.find((option) => option.value === Boolean(profile.profileCompleted))
+      ?.label ?? "No";
+  const selectedBirthDate = parseBirthDate(profile.birthDate);
 
   if (loading) {
     return (
@@ -121,16 +186,18 @@ export const Profile = () => {
 
   return (
     <section className="space-y-6">
-      <div className="space-y-3">
-        <Badge className="w-fit border border-emerald-400/30 bg-emerald-500/10 text-emerald-200">
-          Profile
-        </Badge>
-        <h1 className="text-3xl font-semibold text-white md:text-4xl">
-          Your health profile
-        </h1>
-        <p className="text-sm text-slate-300 md:text-base">
-          Keep this information up to date for better recommendations.
-        </p>
+      <div className="rounded-3xl border border-white/10 bg-linear-to-br from-emerald-400/10 via-slate-950/80 to-slate-950/70 p-6 shadow-2xl">
+        <div className="space-y-3">
+          <Badge className="w-fit border border-emerald-400/30 bg-emerald-500/10 text-emerald-200">
+            Profile
+          </Badge>
+          <h1 className="text-3xl font-semibold text-white md:text-4xl">
+            Your health profile
+          </h1>
+          <p className="text-sm text-slate-300 md:text-base">
+            Keep this information up to date for better recommendations.
+          </p>
+        </div>
       </div>
 
       <div className="flex flex-col gap-6">
@@ -138,7 +205,8 @@ export const Profile = () => {
           <CardHeader>
             <CardTitle className="text-white">Profile details</CardTitle>
             <CardDescription className="text-slate-300">
-              {exists ? "Update your info" : "Create your profile"} · Status: {completionStatus}
+              {exists ? "Update your info" : "Create your profile"} · Status:{" "}
+              {completionStatus}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-5">
@@ -146,23 +214,58 @@ export const Profile = () => {
               <Label className="text-slate-200" htmlFor="profile-gender">
                 Gender
               </Label>
-              <Input
-                id="profile-gender"
-                value={profile.gender ?? ""}
-                onChange={(event) => handleChange("gender", event.target.value)}
-                className="border-white/10 bg-slate-950/40 text-white"
-              />
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="w-full justify-between border-white/10 bg-slate-950/40 text-white"
+                  >
+                    {selectedGender}
+                    <ChevronDown className="h-4 w-4 text-slate-400" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-(--radix-dropdown-menu-trigger-width)">
+                  {genderOptions.map((option) => (
+                    <DropdownMenuItem
+                      key={option.value}
+                      onClick={() => handleChange("gender", option.value)}
+                    >
+                      {option.label}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2 text-slate-200">
                 <Label htmlFor="profile-birthDate">Birth date</Label>
-                <Input
-                  id="profile-birthDate"
-                  type="date"
-                  value={profile.birthDate ?? ""}
-                  onChange={(event) => handleChange("birthDate", event.target.value)}
-                  className="border-white/10 bg-slate-950/40 text-white"
-                />
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start border-white/10 bg-slate-950/40 text-left text-white"
+                    >
+                      <CalendarIcon className="mr-2 h-4 w-4 text-slate-400" />
+                      {selectedBirthDate
+                        ? format(selectedBirthDate, "PPP")
+                        : "Pick a date"}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="p-0" align="start">
+                    <Calendar
+                      className="bg-slate-950 rounded-lg"
+                      mode="single"
+                      selected={selectedBirthDate}
+                      captionLayout="dropdown"
+                      onSelect={(date) =>
+                        handleChange(
+                          "birthDate",
+                          date ? format(date, "yyyy-MM-dd") : "",
+                        )
+                      }
+                    />
+                  </PopoverContent>
+                </Popover>
               </div>
               <div className="space-y-2 text-slate-200">
                 <Label htmlFor="profile-height">Height (cm)</Label>
@@ -175,7 +278,9 @@ export const Profile = () => {
                   onChange={(event) =>
                     handleChange(
                       "heightCm",
-                      event.target.value === "" ? null : Number(event.target.value)
+                      event.target.value === ""
+                        ? null
+                        : Number(event.target.value),
                     )
                   }
                   className="border-white/10 bg-slate-950/40 text-white"
@@ -185,35 +290,51 @@ export const Profile = () => {
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2 text-slate-200">
                 <Label htmlFor="profile-activity">Activity level</Label>
-                <select
-                  id="profile-activity"
-                  value={profile.activityLevel ?? ""}
-                  onChange={(event) => handleChange("activityLevel", event.target.value)}
-                  className="h-11 w-full rounded-md border border-white/10 bg-slate-950/40 px-3 text-sm text-white"
-                >
-                  <option value="">Select activity</option>
-                  {activityOptions.map((level) => (
-                    <option key={level.value} value={level.value}>
-                      {level.label}
-                    </option>
-                  ))}
-                </select>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className="w-full justify-between border-white/10 bg-slate-950/40 text-white"
+                    >
+                      {selectedActivity}
+                      <ChevronDown className="h-4 w-4 text-slate-400" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-(--radix-dropdown-menu-trigger-width)">
+                    {activityOptions.map((option) => (
+                      <DropdownMenuItem
+                        key={option.value}
+                        onClick={() => handleChange("activityLevel", option.value)}
+                      >
+                        {option.label}
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </div>
               <div className="space-y-2 text-slate-200">
                 <Label htmlFor="profile-goal">Diet goal</Label>
-                <select
-                  id="profile-goal"
-                  value={profile.dietGoal ?? ""}
-                  onChange={(event) => handleChange("dietGoal", event.target.value)}
-                  className="h-11 w-full rounded-md border border-white/10 bg-slate-950/40 px-3 text-sm text-white"
-                >
-                  <option value="">Select goal</option>
-                  {goalOptions.map((goal) => (
-                    <option key={goal.value} value={goal.value}>
-                      {goal.label}
-                    </option>
-                  ))}
-                </select>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className="w-full justify-between border-white/10 bg-slate-950/40 text-white"
+                    >
+                      {selectedGoal}
+                      <ChevronDown className="h-4 w-4 text-slate-400" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-(--radix-dropdown-menu-trigger-width)">
+                    {goalOptions.map((option) => (
+                      <DropdownMenuItem
+                        key={option.value}
+                        onClick={() => handleChange("dietGoal", option.value)}
+                      >
+                        {option.label}
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </div>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
@@ -228,23 +349,49 @@ export const Profile = () => {
                   onChange={(event) =>
                     handleChange(
                       "currentWeightKg",
-                      event.target.value === "" ? null : Number(event.target.value)
+                      event.target.value === ""
+                        ? null
+                        : Number(event.target.value),
                     )
                   }
                   className="border-white/10 bg-slate-950/40 text-white"
                 />
               </div>
               <div className="space-y-2 text-slate-200">
+                <Label htmlFor="profile-bmi">Current BMI</Label>
+                <Input
+                  id="profile-bmi"
+                  type="text"
+                  value={profile.bmiCurrent ?? "--"}
+                  readOnly
+                  className="border-white/10 bg-slate-950/40 text-white"
+                />
+              </div>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="space-y-2 text-slate-200">
                 <Label htmlFor="profile-completed">Profile completed</Label>
-                <select
-                  id="profile-completed"
-                  value={profile.profileCompleted ? "yes" : "no"}
-                  onChange={(event) => handleChange("profileCompleted", event.target.value === "yes")}
-                  className="h-11 w-full rounded-md border border-white/10 bg-slate-950/40 px-3 text-sm text-white"
-                >
-                  <option value="no">No</option>
-                  <option value="yes">Yes</option>
-                </select>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className="w-full justify-between border-white/10 bg-slate-950/40 text-white"
+                    >
+                      {selectedCompleted}
+                      <ChevronDown className="h-4 w-4 text-slate-400" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-[var(--radix-dropdown-menu-trigger-width)]">
+                    {completedOptions.map((option) => (
+                      <DropdownMenuItem
+                        key={option.label}
+                        onClick={() => handleChange("profileCompleted", option.value)}
+                      >
+                        {option.label}
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </div>
             </div>
 
@@ -255,7 +402,11 @@ export const Profile = () => {
               onClick={handleSave}
               disabled={saving}
             >
-              {saving ? "Saving..." : exists ? "Update profile" : "Create profile"}
+              {saving
+                ? "Saving..."
+                : exists
+                  ? "Update profile"
+                  : "Create profile"}
             </Button>
           </CardContent>
         </Card>

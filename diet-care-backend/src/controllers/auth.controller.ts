@@ -1,5 +1,6 @@
 ﻿import type { Request, Response } from "express";
-import { login, register } from "../services/auth.service.js";
+import { login, register, issueTokens, rotateRefreshToken, revokeRefreshToken } from "../services/auth.service.js";
+import { clearAuthCookies, getRefreshTokenFromCookies, setAuthCookies, setCsrfCookie } from "../utils/auth-cookies.js";
 
 export const registerController = async (req: Request, res: Response) => {
   const { email, password, name } = req.body as {
@@ -18,7 +19,12 @@ export const registerController = async (req: Request, res: Response) => {
       password,
       ...(name !== undefined ? { name } : {}),
     });
-    return res.status(201).json(result);
+
+    const tokens = await issueTokens({ id: result.user.id, email: result.user.email });
+    setAuthCookies(res, tokens, tokens.refreshExpiresAt);
+    setCsrfCookie(res);
+
+    return res.status(201).json({ user: result.user });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Registration failed";
     return res.status(400).json({ message });
@@ -37,11 +43,46 @@ export const loginController = async (req: Request, res: Response) => {
 
   try {
     const result = await login({ email, password });
-    return res.status(200).json(result);
+    const tokens = await issueTokens({ id: result.user.id, email: result.user.email });
+    setAuthCookies(res, tokens, tokens.refreshExpiresAt);
+    setCsrfCookie(res);
+
+    return res.status(200).json({ user: result.user });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Login failed";
     return res.status(401).json({ message });
   }
+};
+
+export const refreshController = async (req: Request, res: Response) => {
+  const token = getRefreshTokenFromCookies(req);
+  if (!token) {
+    return res.status(401).json({ message: "Missing refresh token" });
+  }
+
+  try {
+    const tokens = await rotateRefreshToken(token);
+    setAuthCookies(res, tokens, tokens.refreshExpiresAt);
+    setCsrfCookie(res);
+    return res.status(200).json({ ok: true });
+  } catch (error) {
+    clearAuthCookies(res);
+    return res.status(403).json({ message: "Invalid refresh token" });
+  }
+};
+
+export const logoutController = async (req: Request, res: Response) => {
+  const token = getRefreshTokenFromCookies(req);
+  if (token) {
+    await revokeRefreshToken(token);
+  }
+  clearAuthCookies(res);
+  return res.status(200).json({ ok: true });
+};
+
+export const csrfController = (_req: Request, res: Response) => {
+  const token = setCsrfCookie(res);
+  return res.status(200).json({ csrfToken: token });
 };
 
 export const meController = (req: Request, res: Response) => {

@@ -8,9 +8,12 @@ export type CreateDietPlanPayload = {
 };
 
 const activityMultiplier: Record<ActivityLevel, number> = {
-  LOW: 1.2,
-  MEDIUM: 1.55,
-  HIGH: 1.725,
+  SEDENTARY: 1.2,
+  LIGHT: 1.375,
+  MODERATE: 1.55,
+  ACTIVE: 1.725,
+  VERY_ACTIVE: 1.9,
+  EXTRA_ACTIVE: 2.0,
 };
 
 const goalAdjustments: Record<DietGoal, number> = {
@@ -49,10 +52,7 @@ const calculateAge = (birthDate: Date) => {
   return age;
 };
 
-const clampCalories = (calories: number, gender: "male" | "female") => {
-  const min = gender === "male" ? 1500 : 1200;
-  return Math.max(min, Math.round(calories));
-};
+const clampCalories = (calories: number) => Math.round(calories);
 
 export const createDietPlan = async (userId: string, payload: CreateDietPlanPayload = {}) => {
   const profile = await userRepo.findProfileByUserId(userId);
@@ -87,10 +87,7 @@ export const createDietPlan = async (userId: string, payload: CreateDietPlanPayl
       : 10 * profile.currentWeightKg + 6.25 * profile.heightCm - 5 * age - 161;
 
   const tdee = bmr * activityMultiplier[profile.activityLevel];
-  const targetCalories = clampCalories(
-    tdee + goalAdjustments[profile.dietGoal],
-    gender
-  );
+  const targetCalories = clampCalories(tdee + goalAdjustments[profile.dietGoal]);
 
   const proteinTarget = Math.round(profile.currentWeightKg * proteinMultiplier[profile.dietGoal]);
   const fatTarget = Math.round(profile.currentWeightKg * 0.8);
@@ -98,6 +95,12 @@ export const createDietPlan = async (userId: string, payload: CreateDietPlanPayl
   const carbsTarget = Math.max(0, Math.round(remainingCalories / 4));
 
   await dietPlanRepo.deactivatePlansByUserId(userId);
+
+  const heightM = profile.heightCm / 100;
+  const targetBmi =
+    payload.targetWeight && heightM
+      ? Math.round((payload.targetWeight / (heightM * heightM)) * 10) / 10
+      : null;
 
   const plan = await dietPlanRepo.createPlan({
     user: { connect: { id: userId } },
@@ -107,6 +110,7 @@ export const createDietPlan = async (userId: string, payload: CreateDietPlanPayl
     fatTarget,
     planType: goalPlanType[profile.dietGoal],
     targetWeight: payload.targetWeight ?? null,
+    targetBmi,
     isActive: true,
   });
 

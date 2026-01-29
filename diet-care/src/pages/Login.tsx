@@ -29,7 +29,7 @@ export const Login = () => {
     setError(null);
     try {
       const data = await loginService({ email, password });
-      setAuth(data.user, data.token);
+      setAuth(data.user);
       navigate("/dashboard", { replace: true });
     } catch (err) {
       setError("Invalid email or password.");

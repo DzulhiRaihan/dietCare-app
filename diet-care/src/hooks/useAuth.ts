@@ -1,12 +1,11 @@
-import { useAuthStore } from "../store/auth.store";
+﻿import { useAuthStore } from "../store/auth.store";
 
 export const useAuth = () => {
-  const { user, token, setAuth, clearAuth } = useAuthStore();
-  const isAuthenticated = Boolean(token);
+  const { user, setAuth, clearAuth } = useAuthStore();
+  const isAuthenticated = Boolean(user);
 
   return {
     user,
-    token,
     isAuthenticated,
     setAuth,
     clearAuth,

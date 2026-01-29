@@ -24,7 +24,7 @@ export const Register = () => {
 
     try {
       const data = await registerService({ email, password, name });
-      setAuth(data.user, data.token);
+      setAuth(data.user);
       navigate("/dashboard", { replace: true });
     } catch (err) {
       setError("Unable to register. Please try again.");
@@ -57,7 +57,7 @@ export const Register = () => {
           <CardContent>
             <form className="space-y-5" onSubmit={handleSubmit}>
               <div className="space-y-2 text-slate-200">
-                <Label htmlFor="register-name">Full name</Label>
+                <Label htmlFor="register-name" className="flex pl-1">Full name</Label>
                 <Input
                   id="register-name"
                   type="text"
@@ -68,7 +68,7 @@ export const Register = () => {
                 />
               </div>
               <div className="space-y-2 text-slate-200">
-                <Label htmlFor="register-email">Email address</Label>
+                <Label htmlFor="register-email" className="flex pl-1">Email address</Label>
                 <Input
                   id="register-email"
                   type="email"
@@ -80,7 +80,7 @@ export const Register = () => {
                 />
               </div>
               <div className="space-y-2 text-slate-200">
-                <Label htmlFor="register-password">Password</Label>
+                <Label htmlFor="register-password" className="flex pl-1">Password</Label>
                 <Input
                   id="register-password"
                   type="password"
