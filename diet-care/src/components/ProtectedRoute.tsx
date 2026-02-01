@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 import { useAuth } from "../hooks/useAuth";
-import { getMe } from "../services/auth.service";
+import { getMe, refreshSession } from "../services/auth.service";
 
 type ProtectedRouteProps = {
   children: JSX.Element;
@@ -21,6 +21,7 @@ export const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
       }
 
       try {
+        await refreshSession();
         const user = await getMe();
         if (mounted) {
           setAuth(user);

@@ -1,24 +1,14 @@
 ﻿import api from "./api";
-import type { DietPlan } from "../types";
-
-type DietPlanResponse = {
-  plan: DietPlan;
-};
-
-type CreateDietPlanPayload = {
-  targetWeight?: number | null;
-};
+import type { ApiResponse, DietPlan } from "../types";
 
 export const getDietPlan = async (): Promise<DietPlan | null> => {
-  const response = await api.get<DietPlanResponse>("/diet-plan");
-  return response.data.plan ?? null;
+  const response = await api.get<ApiResponse<{ plan: DietPlan }>>("/diet-plan");
+  return response.data.data.plan ?? null;
 };
 
-export const createDietPlan = async (
-  payload: CreateDietPlanPayload = {}
-): Promise<DietPlan> => {
-  const response = await api.post<DietPlanResponse>("/diet-plan", payload);
-  return response.data.plan;
+export const createDietPlan = async (): Promise<DietPlan> => {
+  const response = await api.post<ApiResponse<{ plan: DietPlan }>>("/diet-plan", {});
+  return response.data.data.plan;
 };
 
 // Backward-compatible alias for any existing imports.

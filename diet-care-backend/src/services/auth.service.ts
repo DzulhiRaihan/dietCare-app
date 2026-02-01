@@ -12,6 +12,7 @@ export type AuthUserResponse = {
   id: string;
   email: string;
   name?: string | null;
+  isGuest?: boolean;
 };
 
 export type AuthTokens = {
@@ -133,4 +134,32 @@ export const login = async (input: { email: string; password: string }) => {
   }
 
   return { user: { id: user.id, email: user.email, name: user.name } };
+};
+
+export const guestLogin = async () => {
+  const token = generateToken();
+  const email = `guest_${token.slice(0, 12)}@guest.local`;
+  const passwordHash = await bcrypt.hash(generateToken(), SALT_ROUNDS);
+  const user = await userRepo.createUser({
+    email,
+    passwordHash,
+    name: "Guest",
+    isGuest: true,
+  });
+
+  return { user: { id: user.id, email: user.email, name: user.name, isGuest: true } };
+};
+
+export const logoutWithRefreshToken = async (refreshToken: string) => {
+  const refreshTokenHash = hashToken(refreshToken);
+  const record = await refreshRepo.findRefreshToken(refreshTokenHash);
+  if (!record || record.revokedAt) return;
+
+  const user = await userRepo.findUserById(record.userId);
+  if (user?.isGuest) {
+    await userRepo.deleteUserById(user.id);
+    return;
+  }
+
+  await refreshRepo.revokeRefreshToken(record.id, null);
 };

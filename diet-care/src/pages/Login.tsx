@@ -12,7 +12,7 @@ import {
 } from "../components/ui/card";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
-import { login as loginService } from "../services/auth.service";
+import { guestLogin as guestLoginService, login as loginService } from "../services/auth.service";
 import { useAuth } from "../hooks/useAuth";
 
 export const Login = () => {
@@ -21,6 +21,7 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [guestLoading, setGuestLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -35,6 +36,20 @@ export const Login = () => {
       setError("Invalid email or password.");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleGuestLogin = async () => {
+    setGuestLoading(true);
+    setError(null);
+    try {
+      const data = await guestLoginService();
+      setAuth(data.user);
+      navigate("/dashboard", { replace: true });
+    } catch (err) {
+      setError("Unable to start a guest session.");
+    } finally {
+      setGuestLoading(false);
     }
   };
 
@@ -116,16 +131,18 @@ export const Login = () => {
               {error && <p className="text-xs text-rose-300">{error}</p>}
               <Button
                 className="w-full rounded-xl bg-emerald-400 px-4 py-3 text-sm font-semibold text-emerald-950 hover:bg-emerald-300"
-                disabled={loading}
+                disabled={loading || guestLoading}
               >
                 {loading ? "Signing in..." : "Sign in"}
               </Button>
               <Button
-                asChild
+                type="button"
                 variant="outline"
                 className="w-full rounded-xl border-white/20 text-black hover:bg-white/70"
+                onClick={handleGuestLogin}
+                disabled={guestLoading || loading}
               >
-                <Link to="/home">Continue as Guest</Link>
+                {guestLoading ? "Starting guest session..." : "Continue as Guest"}
               </Button>
             </form>
             <p className="mt-6 text-center text-xs text-slate-300">

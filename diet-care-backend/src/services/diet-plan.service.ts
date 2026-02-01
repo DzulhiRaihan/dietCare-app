@@ -3,9 +3,7 @@ import { HttpError } from "../utils/http-error.js";
 import { userRepo } from "../repositories/index.js";
 import * as dietPlanRepo from "../repositories/diet-plan.repository.js";
 
-export type CreateDietPlanPayload = {
-  targetWeight?: number | null;
-};
+export type CreateDietPlanPayload = Record<string, never>;
 
 const activityMultiplier: Record<ActivityLevel, number> = {
   SEDENTARY: 1.2,
@@ -97,10 +95,16 @@ export const createDietPlan = async (userId: string, payload: CreateDietPlanPayl
   await dietPlanRepo.deactivatePlansByUserId(userId);
 
   const heightM = profile.heightCm / 100;
-  const targetBmi =
-    payload.targetWeight && heightM
-      ? Math.round((payload.targetWeight / (heightM * heightM)) * 10) / 10
-      : null;
+  const currentBmi =
+    profile.bmiCurrent ?? Math.round((profile.currentWeightKg / (heightM * heightM)) * 10) / 10;
+
+  const targetBmi = (() => {
+    if (profile.dietGoal === DietGoal.MAINTAIN) return currentBmi;
+    if (profile.dietGoal === DietGoal.LOSE) return Math.min(currentBmi, 22.5);
+    return Math.max(currentBmi, 23.5);
+  })();
+
+  const targetWeight = Math.round(targetBmi * heightM * heightM * 10) / 10;
 
   const plan = await dietPlanRepo.createPlan({
     user: { connect: { id: userId } },
@@ -109,7 +113,7 @@ export const createDietPlan = async (userId: string, payload: CreateDietPlanPayl
     carbsTarget,
     fatTarget,
     planType: goalPlanType[profile.dietGoal],
-    targetWeight: payload.targetWeight ?? null,
+    targetWeight,
     targetBmi,
     isActive: true,
   });

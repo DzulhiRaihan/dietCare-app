@@ -1,6 +1,14 @@
 ﻿import type { Request, Response } from "express";
-import { login, register, issueTokens, rotateRefreshToken, revokeRefreshToken } from "../services/auth.service.js";
+import {
+  login,
+  register,
+  issueTokens,
+  rotateRefreshToken,
+  guestLogin,
+  logoutWithRefreshToken,
+} from "../services/auth.service.js";
 import { clearAuthCookies, getRefreshTokenFromCookies, setAuthCookies, setCsrfCookie } from "../utils/auth-cookies.js";
+import { sendError, sendSuccess } from "../utils/api-response.js";
 
 export const registerController = async (req: Request, res: Response) => {
   const { email, password, name } = req.body as {
@@ -10,7 +18,7 @@ export const registerController = async (req: Request, res: Response) => {
   };
 
   if (!email || !password) {
-    return res.status(400).json({ message: "Email and password are required" });
+    return sendError(res, 400, "Email and password are required");
   }
 
   try {
@@ -24,10 +32,10 @@ export const registerController = async (req: Request, res: Response) => {
     setAuthCookies(res, tokens, tokens.refreshExpiresAt);
     setCsrfCookie(res);
 
-    return res.status(201).json({ user: result.user });
+    return sendSuccess(res, 201, { user: result.user });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Registration failed";
-    return res.status(400).json({ message });
+    return sendError(res, 400, message);
   }
 };
 
@@ -38,7 +46,7 @@ export const loginController = async (req: Request, res: Response) => {
   };
 
   if (!email || !password) {
-    return res.status(400).json({ message: "Email and password are required" });
+    return sendError(res, 400, "Email and password are required");
   }
 
   try {
@@ -47,44 +55,57 @@ export const loginController = async (req: Request, res: Response) => {
     setAuthCookies(res, tokens, tokens.refreshExpiresAt);
     setCsrfCookie(res);
 
-    return res.status(200).json({ user: result.user });
+    return sendSuccess(res, 200, { user: result.user });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Login failed";
-    return res.status(401).json({ message });
+    return sendError(res, 401, message);
+  }
+};
+
+export const guestLoginController = async (_req: Request, res: Response) => {
+  try {
+    const result = await guestLogin();
+    const tokens = await issueTokens({ id: result.user.id, email: result.user.email });
+    setAuthCookies(res, tokens, tokens.refreshExpiresAt);
+    setCsrfCookie(res);
+    return sendSuccess(res, 200, { user: result.user });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Guest login failed";
+    return sendError(res, 400, message);
   }
 };
 
 export const refreshController = async (req: Request, res: Response) => {
   const token = getRefreshTokenFromCookies(req);
   if (!token) {
-    return res.status(401).json({ message: "Missing refresh token" });
+    return sendError(res, 401, "Missing refresh token");
   }
 
   try {
     const tokens = await rotateRefreshToken(token);
     setAuthCookies(res, tokens, tokens.refreshExpiresAt);
     setCsrfCookie(res);
-    return res.status(200).json({ ok: true });
+    return sendSuccess(res, 200, { ok: true });
   } catch (error) {
     clearAuthCookies(res);
-    return res.status(403).json({ message: "Invalid refresh token" });
+    return sendError(res, 403, "Invalid refresh token");
   }
 };
 
 export const logoutController = async (req: Request, res: Response) => {
   const token = getRefreshTokenFromCookies(req);
   if (token) {
-    await revokeRefreshToken(token);
+    await logoutWithRefreshToken(token);
   }
   clearAuthCookies(res);
-  return res.status(200).json({ ok: true });
+  return sendSuccess(res, 200, { ok: true });
 };
 
 export const csrfController = (_req: Request, res: Response) => {
   const token = setCsrfCookie(res);
-  return res.status(200).json({ csrfToken: token });
+  return sendSuccess(res, 200, { csrfToken: token });
 };
 
 export const meController = (req: Request, res: Response) => {
-  return res.status(200).json({ user: req.user });
+  return sendSuccess(res, 200, { user: req.user });
 };

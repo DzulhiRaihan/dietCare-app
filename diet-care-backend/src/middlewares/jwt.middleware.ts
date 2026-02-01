@@ -2,6 +2,7 @@
 import jwt from "jsonwebtoken";
 import type { NextFunction, Request, Response } from "express";
 import { env } from "../config/env.js";
+import { sendError } from "../utils/api-response.js";
 
 type AppJwtPayload = JwtPayload & {
   sub?: string;
@@ -44,7 +45,7 @@ const isTokenExpiredError = (error: unknown) => {
 export const jwtMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const token = getTokenFromHeader(req) ?? getTokenFromCookies(req);
   if (!token) {
-    return res.status(401).json({ message: "Missing Authorization token" });
+    return sendError(res, 401, "Missing Authorization token");
   }
 
   try {
@@ -55,7 +56,7 @@ export const jwtMiddleware = (req: Request, res: Response, next: NextFunction) =
     if (!isTokenExpiredError(error)) {
       console.error("JWT verification failed", error);
     }
-    return res.status(401).json({ message: "Invalid or expired token" });
+    return sendError(res, 401, "Invalid or expired token");
   }
 };
 

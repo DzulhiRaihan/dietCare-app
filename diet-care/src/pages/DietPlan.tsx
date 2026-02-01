@@ -3,7 +3,14 @@
 import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
-import { Input } from "../components/ui/input";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "../components/ui/dialog";
 import { Progress } from "../components/ui/progress";
 import type { DietPlan as DietPlanType } from "../types";
 import { createDietPlan, getDietPlan } from "../services/diet.service";
@@ -12,7 +19,12 @@ export const DietPlan = () => {
   const [plan, setPlan] = useState<DietPlanType | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [targetWeight, setTargetWeight] = useState<string>("");
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogContent, setDialogContent] = useState<{
+    type: "success" | "error";
+    title: string;
+    message: string;
+  } | null>(null);
 
   const loadPlan = async () => {
     setLoading(true);
@@ -36,13 +48,23 @@ export const DietPlan = () => {
     setLoading(true);
     setError(null);
     try {
-      const planData = await createDietPlan({
-        targetWeight: targetWeight ? Number(targetWeight) : null,
-      });
+      const planData = await createDietPlan();
       setPlan(planData);
       setError(null);
+      setDialogContent({
+        type: "success",
+        title: "Diet plan created",
+        message: "Your diet plan has been generated successfully.",
+      });
+      setDialogOpen(true);
     } catch (err) {
       setError("Unable to create diet plan. Check your profile details.");
+      setDialogContent({
+        type: "error",
+        title: "Create failed",
+        message: "Unable to create diet plan. Check your profile details.",
+      });
+      setDialogOpen(true);
     } finally {
       setLoading(false);
     }
@@ -52,6 +74,26 @@ export const DietPlan = () => {
 
   return (
     <section className="space-y-6">
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent className="border-white/10 bg-slate-950/95 text-white">
+          <DialogHeader>
+            <DialogTitle>{dialogContent?.title}</DialogTitle>
+            <DialogDescription className="text-slate-300">
+              {dialogContent?.message}
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="sm:justify-end">
+            <Button
+              type="button"
+              variant="outline"
+              className="border-white/20 text-white hover:bg-white/10"
+              onClick={() => setDialogOpen(false)}
+            >
+              Close
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
       <header className="space-y-2">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-200">
           Diet Plan
@@ -81,17 +123,6 @@ export const DietPlan = () => {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="space-y-2 text-slate-200">
-              <label className="text-sm">Target weight (optional)</label>
-              <Input
-                type="number"
-                min={35}
-                max={200}
-                value={targetWeight}
-                onChange={(event) => setTargetWeight(event.target.value)}
-                className="border-white/10 bg-slate-950/40 text-white"
-              />
-            </div>
             <Button
               className="rounded-xl bg-emerald-400 text-emerald-950 hover:bg-emerald-300"
               onClick={handleCreatePlan}

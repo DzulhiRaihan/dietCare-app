@@ -1,4 +1,5 @@
 ﻿import type { NextFunction, Request, Response } from "express";
+import { sendError } from "../utils/api-response.js";
 
 export const csrfMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const method = req.method.toUpperCase();
@@ -10,7 +11,7 @@ export const csrfMiddleware = (req: Request, res: Response, next: NextFunction) 
   const csrfHeader = req.header("x-csrf-token");
 
   if (!csrfCookie || !csrfHeader || csrfCookie !== csrfHeader) {
-    return res.status(403).json({ message: "Invalid CSRF token" });
+    return sendError(res, 403, "Invalid CSRF token");
   }
 
   return next();

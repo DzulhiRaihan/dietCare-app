@@ -9,6 +9,7 @@ import {
   refreshController,
   logoutController,
   csrfController,
+  guestLoginController,
 } from "../controllers/auth.controller.js";
 
 const router = Router();
@@ -16,6 +17,7 @@ const router = Router();
 router.get("/csrf", csrfController);
 router.post("/register", registerController);
 router.post("/login", loginController);
+router.post("/guest", guestLoginController);
 router.post("/refresh", refreshController);
 router.post("/logout", csrfMiddleware, logoutController);
 router.get("/me", jwtMiddleware, requireAuth, meController);

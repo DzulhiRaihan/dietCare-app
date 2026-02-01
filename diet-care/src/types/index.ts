@@ -1,7 +1,14 @@
-﻿export type User = {
+﻿export type ApiResponse<T> = {
+  success: boolean;
+  data: T;
+  message: string | null;
+};
+
+export type User = {
   id: string;
   name?: string | null;
   email: string;
+  isGuest?: boolean;
 };
 
 export type UserProfile = {
@@ -62,3 +69,5 @@ export type DietPlan = {
   isActive?: boolean;
   createdAt?: string;
 };
+
+

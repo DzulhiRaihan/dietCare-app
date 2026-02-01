@@ -1,8 +1,9 @@
 ﻿import type { NextFunction, Request, Response } from "express";
+import { sendError } from "../utils/api-response.js";
 
 export const requireAuth = (req: Request, res: Response, next: NextFunction) => {
   if (!req.user) {
-    return res.status(401).json({ message: "Unauthorized" });
+    return sendError(res, 401, "Unauthorized");
   }
 
   return next();

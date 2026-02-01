@@ -1,8 +1,10 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
+﻿import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
 import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
+import { logout } from "../services/auth.service";
+import { useAuth } from "../hooks/useAuth";
 
 const navItems = [
   { label: "Overview", path: "/dashboard" },
@@ -13,6 +15,18 @@ const navItems = [
 ];
 
 export const Dashboard = () => {
+  const navigate = useNavigate();
+  const { clearAuth } = useAuth();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } finally {
+      clearAuth();
+      navigate("/login", { replace: true });
+    }
+  };
+
   return (
     <main className="min-h-screen bg-linear-to-b from-slate-950 via-slate-900 to-emerald-950 text-slate-100">
       <div className="mx-auto grid min-h-screen w-full max-w-7xl grid-cols-1 gap-6 px-4 py-6 lg:grid-cols-[260px_1fr] lg:gap-8 lg:px-8">
@@ -63,19 +77,25 @@ export const Dashboard = () => {
         <div className="flex flex-col gap-6">
           <header className="flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-white/10 bg-white/5 px-6 py-4">
             <div>
-              <h1 className="text-2xl font-semibold text-white flex" >Dashboard</h1>
+              <h1 className="text-2xl font-semibold text-white flex">Dashboard</h1>
               <p className="text-sm text-slate-300">
                 Plan your day with clarity and confidence.
               </p>
             </div>
             <div className="flex items-center gap-3">
               <Avatar>
-                <AvatarImage src="https://i.kym-cdn.com/entries/icons/original/000/048/010/side_eye_cat.jpg" alt="User avatar" />
+                <AvatarImage
+                  src="https://i.kym-cdn.com/entries/icons/original/000/048/010/side_eye_cat.jpg"
+                  alt="User avatar"
+                />
                 <AvatarFallback className="text-slate-900">DC</AvatarFallback>
               </Avatar>
-              <Button asChild variant="outline" className="border-white/20 text-black hover:bg-white/70">
-                <Link to="/login">Logout</Link>
-
+              <Button
+                variant="outline"
+                className="border-white/20 text-black hover:bg-white/70"
+                onClick={handleLogout}
+              >
+                Logout
               </Button>
             </div>
           </header>

@@ -25,6 +25,14 @@ import {
   PopoverTrigger,
 } from "../components/ui/popover";
 import { Calendar } from "../components/ui/calendar";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "../components/ui/dialog";
 import type { UserProfile } from "../types";
 import {
   createProfile,
@@ -82,6 +90,12 @@ export const Profile = () => {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [exists, setExists] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogContent, setDialogContent] = useState<{
+    type: "success" | "error";
+    title: string;
+    message: string;
+  } | null>(null);
 
   useEffect(() => {
     let mounted = true;
@@ -152,8 +166,20 @@ export const Profile = () => {
         birthDate: data.birthDate ? data.birthDate.split("T")[0] : "",
       });
       setExists(true);
+      setDialogContent({
+        type: "success",
+        title: exists ? "Profile updated" : "Profile created",
+        message: "Your profile has been saved successfully.",
+      });
+      setDialogOpen(true);
     } catch (err) {
       setError("Unable to save profile. Please check your inputs.");
+      setDialogContent({
+        type: "error",
+        title: "Save failed",
+        message: "Unable to save profile. Please check your inputs.",
+      });
+      setDialogOpen(true);
     } finally {
       setSaving(false);
     }
@@ -186,6 +212,26 @@ export const Profile = () => {
 
   return (
     <section className="space-y-6">
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent className="border-white/10 bg-slate-950 text-white">
+          <DialogHeader>
+            <DialogTitle>{dialogContent?.title}</DialogTitle>
+            <DialogDescription className="text-slate-300">
+              {dialogContent?.message}
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="sm:justify-end">
+            <Button
+              type="button"
+              variant="outline"
+              className="border-white/20 text-black hover:bg-white/70"
+              onClick={() => setDialogOpen(false)}
+            >
+              Close
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
       <div className="rounded-3xl border border-white/10 bg-linear-to-br from-emerald-400/10 via-slate-950/80 to-slate-950/70 p-6 shadow-2xl">
         <div className="space-y-3">
           <Badge className="w-fit border border-emerald-400/30 bg-emerald-500/10 text-emerald-200">
@@ -381,7 +427,7 @@ export const Profile = () => {
                       <ChevronDown className="h-4 w-4 text-slate-400" />
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent className="w-[var(--radix-dropdown-menu-trigger-width)]">
+                  <DropdownMenuContent className="w-(--radix-dropdown-menu-trigger-width)">
                     {completedOptions.map((option) => (
                       <DropdownMenuItem
                         key={option.label}
