@@ -18,6 +18,9 @@ const getCookie = (name: string) => {
 };
 
 api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+  if (config.url?.includes("/rag/chat")) {
+    config.timeout = 60000;
+  }
   const method = config.method?.toUpperCase();
   if (method && !["GET", "HEAD", "OPTIONS"].includes(method)) {
     const csrfToken = getCookie("csrf_token");

@@ -19,6 +19,9 @@ export const useAuthStore = create<AuthState>((set) => ({
   },
   clearAuth: () => {
     localStorage.removeItem("auth_user");
+    Object.keys(localStorage)
+      .filter((key) => key.startsWith("chat_session_id_"))
+      .forEach((key) => localStorage.removeItem(key));
     set({ user: null });
   },
 }));

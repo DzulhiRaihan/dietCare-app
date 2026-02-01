@@ -35,3 +35,24 @@ export const updateProfileByUserId = (
 ): Promise<UserProfile> => {
   return prisma.userProfile.update({ where: { userId }, data });
 };
+
+export const findLatestWeightLog = (userId: string) => {
+  return prisma.weightLog.findFirst({
+    where: { userId },
+    orderBy: { logDate: "desc" },
+  });
+};
+
+export const findRecentCalorieLogs = (userId: string, days = 7) => {
+  const from = new Date();
+  from.setDate(from.getDate() - days);
+  return prisma.calorieLog.findMany({
+    where: {
+      userId,
+      logDate: {
+        gte: from,
+      },
+    },
+    orderBy: { logDate: "desc" },
+  });
+};

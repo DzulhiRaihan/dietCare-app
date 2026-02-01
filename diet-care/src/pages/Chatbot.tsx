@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Bot, SendHorizontal } from "lucide-react";
 
@@ -7,7 +7,9 @@ import { Button } from "../components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
 import { Input } from "../components/ui/input";
 import type { ChatMessage, ChatRole } from "../types";
-import { createSession, getHistory, sendMessage } from "../services/chat.service";
+import { createSession, getHistory } from "../services/chat.service";
+import { sendRagMessage } from "../services/rag.service";
+import { useAuth } from "../hooks/useAuth";
 
 const suggestedPrompts = [
   "What should I eat today?",
@@ -28,14 +30,51 @@ const statusTone: Record<typeof userContext.status, string> = {
 
 const formatRole = (role: ChatRole) => role.toLowerCase();
 
+const renderFormattedText = (text: string) => {
+  const lines = text.split("\n");
+  return lines.map((line, lineIndex) => {
+    const parts = line.split(/(\*\*[^*]+\*\*)/g);
+    const content = parts.map((part, index) => {
+      if (part.startsWith("**") && part.endsWith("**")) {
+        return (
+          <strong key={`${part}-${index}`} className="font-semibold text-white">
+            {part.slice(2, -2)}
+          </strong>
+        );
+      }
+      return <span key={`${part}-${index}`}>{part}</span>;
+    });
+
+    return (
+      <p key={`line-${lineIndex}`} className="min-h-[1.1em]">
+        {content}
+      </p>
+    );
+  });
+};
+
+const TypingDots = () => (
+  <span className="inline-flex items-center gap-1">
+    <span className="h-2 w-2 animate-bounce rounded-full bg-emerald-200 [animation-delay:-0.2s]" />
+    <span className="h-2 w-2 animate-bounce rounded-full bg-emerald-200 [animation-delay:-0.1s]" />
+    <span className="h-2 w-2 animate-bounce rounded-full bg-emerald-200" />
+  </span>
+);
+
+const getSessionKey = (userId?: string | null) => {
+  if (!userId) return "chat_session_id_guest";
+  return `chat_session_id_${userId}`;
+};
+
 export const Chatbot = () => {
+  const { user } = useAuth();
+  const sessionKey = useMemo(() => getSessionKey(user?.id), [user?.id]);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  const [sessionId, setSessionId] = useState<string | null>(
-    () => localStorage.getItem("chat_session_id")
-  );
+  const [sessionId, setSessionId] = useState<string | null>(() => localStorage.getItem(sessionKey));
   const [error, setError] = useState<string | null>(null);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
 
   const emptyState = useMemo(() => messages.length === 0, [messages.length]);
 
@@ -47,7 +86,7 @@ export const Chatbot = () => {
   const ensureSession = async () => {
     if (sessionId) return sessionId;
     const session = await createSession();
-    localStorage.setItem("chat_session_id", session.sessionId);
+    localStorage.setItem(sessionKey, session.sessionId);
     setSessionId(session.sessionId);
     return session.sessionId;
   };
@@ -56,10 +95,16 @@ export const Chatbot = () => {
     setMessages([]);
     setError(null);
     const session = await createSession();
-    localStorage.setItem("chat_session_id", session.sessionId);
+    localStorage.setItem(sessionKey, session.sessionId);
     setSessionId(session.sessionId);
     await loadHistory(session.sessionId);
   };
+
+  useEffect(() => {
+    const storedSession = localStorage.getItem(sessionKey);
+    setSessionId(storedSession);
+    setMessages([]);
+  }, [sessionKey]);
 
   useEffect(() => {
     if (!sessionId) return;
@@ -67,6 +112,12 @@ export const Chatbot = () => {
       setError("Unable to load history.");
     });
   }, [sessionId]);
+
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+    container.scrollTop = container.scrollHeight;
+  }, [messages, isTyping]);
 
   const handleSend = async (text: string) => {
     const trimmed = text.trim();
@@ -77,9 +128,28 @@ export const Chatbot = () => {
 
     try {
       const activeSessionId = await ensureSession();
-      const response = await sendMessage({ sessionId: activeSessionId, content: trimmed });
-      setMessages((prev) => [...prev, response.userMessage, response.assistantMessage]);
+      const optimisticMessage: ChatMessage = {
+        id: `local-${Date.now()}`,
+        sessionId: activeSessionId,
+        role: "USER",
+        content: trimmed,
+        createdAt: new Date().toISOString(),
+      };
+      setMessages((prev) => [...prev, optimisticMessage]);
       setInput("");
+
+      const response = await sendRagMessage({
+        sessionId: activeSessionId,
+        content: trimmed,
+        language: "id",
+        source: "nutrition_book_id",
+        topK: 5,
+      });
+      setMessages((prev) => [
+        ...prev.filter((msg) => msg.id !== optimisticMessage.id),
+        response.userMessage,
+        response.assistantMessage,
+      ]);
     } catch (err) {
       setError("Unable to send message. Please try again.");
     } finally {
@@ -130,16 +200,17 @@ export const Chatbot = () => {
       </header>
 
       <div className="grid gap-6 xl:grid-cols-[1.4fr_0.6fr]">
-        <Card className="border-white/10 bg-slate-950/40 xl:col-span-2">
+        <Card className="border-white/10 bg-slate-950/50 backdrop-blur xl:col-span-2">
           <CardHeader>
             <CardTitle className="text-white">Conversation</CardTitle>
             <CardDescription className="text-slate-300">
               Messages are private and synced to your account.
             </CardDescription>
           </CardHeader>
-          <CardContent className="flex h-130 flex-col gap-4">
-            {emptyState ? (
-              <div className="flex flex-1 flex-col items-center justify-center gap-4 text-center text-slate-300">
+          <CardContent className="flex h-130 flex-col gap-5 overflow-hidden">
+            <div className="flex min-h-0 flex-1 flex-col rounded-3xl border border-white/10 bg-slate-950/60 p-4 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)]">
+              {emptyState ? (
+                <div className="flex flex-1 flex-col items-center justify-center gap-4 text-center text-slate-300">
                 <div className="rounded-full border border-white/10 bg-white/5 p-4">
                   <Bot className="h-6 w-6 text-emerald-200" />
                 </div>
@@ -161,20 +232,34 @@ export const Chatbot = () => {
                     </Button>
                   ))}
                 </div>
-              </div>
-            ) : (
-              <div className="flex-1 space-y-4 overflow-y-auto pr-2 scrollbar-thin">
+                {isTyping && (
+                  <div className="mt-4 flex w-full justify-start">
+                    <div className="max-w-[70%] rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-left text-sm text-slate-100 shadow-sm">
+                      <div className="flex items-center justify-between gap-2">
+                        <p className="text-xs uppercase tracking-[0.2em] text-slate-400">
+                          assistant
+                        </p>
+                      </div>
+                      <div className="mt-2">
+                        <TypingDots />
+                      </div>
+                    </div>
+                  </div>
+                )}
+                </div>
+              ) : (
+                <div ref={scrollRef} className="min-h-0 flex-1 space-y-4 overflow-y-auto pr-2 scrollbar-thin">
                 {messages.map((message) => (
                   <div
                     key={message.id}
                     className={`flex ${message.role === "USER" ? "justify-end" : "justify-start"}`}
                   >
                     <div
-                      className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm shadow-sm ${
+                      className={`max-w-[80%] rounded-2xl border px-4 py-3 text-sm shadow-sm text-justify ${
                         message.role === "USER"
-                          ? "bg-emerald-400/20 text-emerald-100"
+                          ? "border-emerald-300/30 bg-emerald-400/20 text-emerald-50 shadow-[0_8px_24px_-16px_rgba(16,185,129,0.6)]"
                           : message.role === "ASSISTANT"
-                          ? "bg-white/10 text-slate-100"
+                          ? "border-white/10 bg-white/10 text-slate-100"
                           : "bg-slate-900/60 text-slate-300"
                       }`}
                     >
@@ -183,12 +268,29 @@ export const Chatbot = () => {
                           {formatRole(message.role)}
                         </p>
                       </div>
-                      <p className="mt-2 leading-relaxed">{message.content}</p>
+                      <div className="mt-2 space-y-1 wrap-break-word whitespace-pre-wrap leading-relaxed">
+                        {renderFormattedText(message.content)}
+                      </div>
                     </div>
                   </div>
                 ))}
-              </div>
-            )}
+                {isTyping && (
+                  <div className="flex justify-start">
+                    <div className="max-w-[70%] rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-slate-100 shadow-sm">
+                      <div className="flex items-center justify-between gap-2">
+                        <p className="text-xs uppercase tracking-[0.2em] text-slate-400">
+                          assistant
+                        </p>
+                      </div>
+                      <div className="mt-2">
+                        <TypingDots />
+                      </div>
+                    </div>
+                  </div>
+                )}
+                </div>
+              )}
+            </div>
 
             <div className="space-y-3 border-t border-white/10 pt-4">
               <div className="flex flex-wrap gap-2">
@@ -196,7 +298,7 @@ export const Chatbot = () => {
                   <Button
                     key={prompt}
                     variant="outline"
-                    className="border-white/20 text-xs bg-emerald-400/20 text-white hover:bg-emerald-300"
+                    className="border-white/20 text-xs bg-emerald-400/15 text-white hover:bg-emerald-300/30"
                     onClick={() => handleSend(prompt)}
                   >
                     {prompt}

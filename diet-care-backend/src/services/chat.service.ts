@@ -15,7 +15,10 @@ const DUMMY_ASSISTANT_RESPONSE = "Thanks! I've saved your message. A diet consul
 
 const assertSessionAccess = (session: { userId: string | null; isGuest: boolean }, userId?: string) => {
   if (session.userId) {
-    if (!userId || session.userId !== userId) {
+    if (!userId) {
+      throw new HttpError(401, "Unauthorized");
+    }
+    if (session.userId !== userId) {
       throw new HttpError(403, "You do not have access to this session");
     }
     return;
