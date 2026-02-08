@@ -1,0 +1,646 @@
+foodName_id,foodName_en,category,mealType,calories,protein,carbs,fat
+Telur Orak-arik (2 besar),Scrambled Eggs (2 large),Protein/Dairy,Breakfast,180,12.0,2.0,14.0
+Roti Bakar Gandum Utuh (1 potong),Whole Wheat Toast (1 slice),Grain,Breakfast,80,4.0,14.0,1.0
+Kopi (hitam),Coffee (black),Beverage,Breakfast,5,0.3,0.0,0.1
+Pisang,Banana,Fruit,Breakfast,105,1.3,27.0,0.4
+Salad Ayam Panggang,Grilled Chicken Salad,Meal/Protein,Lunch,350,30.0,10.0,20.0
+Apel,Apple,Fruit,Snack,95,0.5,25.0,0.3
+Salmon (4oz panggang),Salmon (4oz grilled),Protein/Fish,Dinner,230,25.0,0.0,14.0
+Quinoa (1 cangkir dimasak),Quinoa (1 cup cooked),Grain,Dinner,222,8.0,39.0,3.6
+Brokoli Kukus (1 cangkir),Steamed Broccoli (1 cup),Vegetable,Dinner,55,3.7,11.2,0.6
+Yogurt Yunani (biasa 1 cangkir),Greek Yogurt (plain 1 cup),Dairy,Snack,150,25.0,8.0,3.0
+Oatmeal (1 cangkir dimasak),Oatmeal (1 cup cooked),Grain,Breakfast,160,6.0,28.0,3.0
+Blueberry (1/2 cangkir),Blueberries (1/2 cup),Fruit,Breakfast,42,0.5,11.0,0.2
+Almond (1 ons),Almonds (1 oz),Nut,Snack,164,6.0,6.0,14.0
+Sandwich Kalkun (dengan gandum),Turkey Sandwich (on wheat),Meal/Processed,Lunch,340,22.0,34.0,12.0
+Tongkat Wortel (1 cangkir),Carrot Sticks (1 cup),Vegetable,Snack,52,1.2,12.3,0.3
+Spageti Bolognese,Spaghetti Bolognese,Meal/Pasta,Dinner,460,20.0,55.0,18.0
+Salad Samping (saus ringan),Side Salad (light dressing),Vegetable,Dinner,70,2.0,8.0,4.0
+Protein Kocok (Whey),Protein Shake (Whey),Supplement,Snack,120,24.0,3.0,1.0
+Sereal (Frosted Flakes 1 cangkir),Cereal (Frosted Flakes 1 cup),Grain/Processed,Breakfast,130,2.0,31.0,0.0
+Sup Lentil (1 kaleng),Lentil Soup (1 can),Meal/Legume,Lunch,230,15.0,35.0,3.0
+Nasi Putih (1 gelas matang),White Rice (1 cup cooked),Grain,Dinner,204,4.2,44.5,0.4
+Tumis Tahu,Tofu Stir-fry,Meal/Vegetarian,Dinner,400,18.0,30.0,22.0
+Oranye,Orange,Fruit,Snack,62,1.2,15.4,0.2
+Bagel (biasa),Bagel (plain),Grain,Breakfast,270,11.0,55.0,1.5
+Krim Keju (2 sdm),Cream Cheese (2 tbsp),Dairy,Breakfast,100,2.0,2.0,10.0
+Salad Tuna (1/2 cangkir),Tuna Salad (1/2 cup),Meal/Fish,Lunch,190,19.0,2.0,12.0
+Kerupuk (5 gandum utuh),Crackers (5 whole wheat),Grain/Processed,Lunch,90,2.0,14.0,3.0
+Steak Daging Sapi (6oz sirloin),Beef Steak (6oz sirloin),Protein/Meat,Dinner,270,42.0,0.0,10.0
+Kentang Panggang (sedang),Baked Potato (medium),Vegetable,Dinner,160,4.3,36.0,0.2
+Es Krim (1/2 cangkir vanila),Ice Cream (1/2 cup vanilla),Dairy/Dessert,Snack,145,2.5,17.0,7.5
+Pizza (1 potong peperoni),Pizza (1 slice pepperoni),Meal/Processed,Dinner,290,12.0,34.0,12.0
+Roti Bakar Alpukat (1 potong),Avocado Toast (1 slice),Meal/Vegetarian,Breakfast,260,7.0,28.0,15.0
+Telur Rebus (1 besar),Hard-Boiled Egg (1 large),Protein,Snack,78,6.3,0.6,5.3
+Bungkus Ayam (dengan tortilla),Chicken Wrap (with tortilla),Meal/Processed,Lunch,410,25.0,38.0,17.0
+Anggur (1 cangkir),Grapes (1 cup),Fruit,Snack,104,1.1,27.0,0.2
+Keju Cottage (1/2 cangkir),Cottage Cheese (1/2 cup),Dairy,Snack,90,12.0,5.0,3.0
+Burger (burger keju),Burger (cheeseburger),Meal/Processed,Dinner,550,30.0,40.0,30.0
+Kentang Goreng (sedang),French Fries (medium),Vegetable/Processed,Dinner,340,4.0,44.0,17.0
+Batangan Protein,Protein Bar,Supplement/Processed,Snack,210,20.0,22.0,7.0
+Kacang Hitam (1/2 cangkir),Black Beans (1/2 cup),Legume,Lunch,114,7.6,20.4,0.5
+Salsa (1/4 cangkir),Salsa (1/4 cup),Vegetable,Lunch,20,0.8,4.5,0.1
+Sup Mie Ayam (1 kaleng),Chicken Noodle Soup (1 can),Meal/Processed,Lunch,150,7.0,18.0,5.0
+Selai Kacang (2 sdm),Peanut Butter (2 tbsp),Nut,Snack,190,7.0,8.0,16.0
+Batang Seledri (1 cangkir),Celery Sticks (1 cup),Vegetable,Snack,14,0.6,3.0,0.2
+Ikan kod (4 ons dipanggang),Cod (4oz baked),Protein/Fish,Dinner,95,20.0,0.0,0.8
+Kacang Hijau (1 cangkir),Green Beans (1 cup),Vegetable,Dinner,31,1.8,7.0,0.2
+Kue Coklat Chip (1 besar),Chocolate Chip Cookie (1 large),Dessert,Snack,220,2.5,30.0,11.0
+Udang (3oz dikukus),Shrimp (3oz steamed),Protein/Fish,Dinner,84,20.0,0.2,0.2
+Pancake (2 sedang),Pancakes (2 medium),Grain,Breakfast,180,5.0,30.0,5.0
+Sirup Maple (2 sdm),Maple Syrup (2 tbsp),Condiment,Breakfast,104,0.0,27.0,0.0
+Tautan Sosis (1 matang),Sausage Link (1 cooked),Protein/Meat,Breakfast,85,5.0,1.0,7.0
+Smoothie (Buah & Yogurt),Smoothie (Fruit & Yogurt),Beverage/Meal,Breakfast,280,12.0,55.0,3.0
+Tahu (4oz keras),Tofu (4oz firm),Protein/Vegetarian,Lunch,90,10.0,3.0,5.0
+Nasi Merah (1 cangkir dimasak),Brown Rice (1 cup cooked),Grain,Lunch,215,5.0,45.0,1.8
+Paprika (1 merah sedang),Bell Pepper (1 medium red),Vegetable,Lunch,31,1.2,6.0,0.3
+Hummus (2 sendok makan),Hummus (2 tbsp),Legume,Snack,70,2.0,4.0,5.0
+Roti Pita (1 gandum utuh),Pita Bread (1 whole wheat),Grain,Snack,170,6.0,35.0,1.5
+Potongan Daging Babi (4oz panggang),Pork Chop (4oz grilled),Protein/Meat,Dinner,220,30.0,0.0,10.0
+Kentang Tumbuk (1 cangkir),Mashed Potatoes (1 cup),Vegetable,Dinner,230,4.0,35.0,8.0
+Jagung (1 cangkir),Corn (1 cup),Vegetable,Dinner,132,4.7,30.0,1.8
+Soda (1 kaleng Coke),Soda (1 can Coke),Beverage,Snack,140,0.0,39.0,0.0
+Pretzel (1 ons),Pretzels (1 oz),Grain/Processed,Snack,110,3.0,23.0,1.0
+Keju Cheddar (1 ons),Cheddar Cheese (1 oz),Dairy,Snack,115,7.0,1.0,9.5
+Salad Caesar (dengan ayam),Caesar Salad (with chicken),Meal/Protein,Lunch,470,30.0,15.0,30.0
+Jus Jeruk (1 cangkir),Orange Juice (1 cup),Beverage,Breakfast,112,1.7,25.8,0.5
+Bacon (2 potong matang),Bacon (2 slices cooked),Protein/Meat,Breakfast,86,6.0,0.2,6.8
+Wafel (2 buatan sendiri),Waffles (2 homemade),Grain,Breakfast,220,6.0,28.0,9.0
+Pir,Pear,Fruit,Snack,101,0.6,27.0,0.2
+Dada Ayam (4oz panggang),Chicken Breast (4oz roasted),Protein/Meat,Lunch,185,35.0,0.0,4.0
+Kacang Campuran (1/4 cangkir),Mixed Nuts (1/4 cup),Nut,Snack,200,6.0,8.0,18.0
+Nila (4oz dipanggang),Tilapia (4oz baked),Protein/Fish,Dinner,110,22.0,0.0,2.5
+Asparagus (1 cup steamed),Asparagus (1 cup steamed),Vegetable,Dinner,40,4.3,7.4,0.4
+Ubi Jalar (1 panggang sedang),Sweet Potato (1 medium baked),Vegetable,Dinner,103,2.3,23.6,0.2
+Popcorn (3 cangkir air-pop),Popcorn (3 cups air-popped),Grain,Snack,93,3.0,18.6,1.1
+Kismis (1/4 cangkir),Raisins (1/4 cup),Fruit,Snack,130,1.3,34.0,0.2
+Makaroni & Keju (1 cangkir),Macaroni & Cheese (1 cup),Meal/Pasta,Lunch,350,10.0,40.0,17.0
+Sup Tomat (1 kaleng),Tomato Soup (1 can),Meal/Vegetable,Lunch,170,4.0,25.0,6.0
+Sandwich Keju Panggang,Grilled Cheese Sandwich,Meal/Processed,Lunch,390,15.0,32.0,22.0
+Taco Daging Sapi (2 cangkang keras),Beef Tacos (2 hard shell),Meal/Meat,Dinner,380,18.0,28.0,22.0
+Kacang Refried (1/2 cangkir),Refried Beans (1/2 cup),Legume,Dinner,115,7.0,19.0,1.0
+Guacamole (1/4 cangkir),Guacamole (1/4 cup),Vegetable/Condiment,Dinner,90,1.0,4.0,8.0
+Semangka (1 cangkir potong dadu),Watermelon (1 cup diced),Fruit,Snack,46,0.9,11.5,0.2
+Muffin Inggris (gandum utuh),English Muffin (whole wheat),Grain,Breakfast,134,6.0,26.0,1.0
+Sandwich Selai Kacang & Jeli,Peanut Butter & Jelly Sandwich,Meal/Processed,Lunch,390,12.0,50.0,17.0
+Sup Krim Kerang (1 cangkir),Clam Chowder (1 cup),Meal/Seafood,Lunch,200,10.0,18.0,9.0
+Es Teh (Manis 16oz),Iced Tea (Sweetened 16oz),Beverage,Snack,180,0.0,46.0,0.0
+Lasagna (1 porsi daging),Lasagna (1 serving meat),Meal/Pasta,Dinner,350,20.0,30.0,17.0
+Roti Bawang Putih (1 potong),Garlic Bread (1 slice),Grain,Dinner,150,4.0,18.0,7.0
+Susu Coklat (1 gelas),Chocolate Milk (1 cup),Beverage/Dairy,Snack,200,8.0,26.0,8.0
+Roti Putih (1 potong),White Bread (1 slice),Grain,Breakfast,70,2.0,13.0,1.0
+Jeli (1 sdm anggur),Jelly (1 tbsp grape),Condiment,Breakfast,50,0.0,13.0,0.0
+Burger Vegetarian (1 patty),Veggie Burger (1 patty),Protein/Vegetarian,Lunch,120,11.0,10.0,4.0
+Roti (hamburger),Bun (hamburger),Grain,Lunch,140,4.0,26.0,2.0
+Kecap (1 sdm),Ketchup (1 tbsp),Condiment,Lunch,20,0.2,5.0,0.1
+Muffin (Blueberry 1 besar),Muffin (Blueberry 1 large),Grain/Dessert,Breakfast,380,5.0,55.0,16.0
+Kopi (dengan krim/gula),Coffee (with cream/sugar),Beverage,Breakfast,50,0.5,5.0,3.0
+Keripik Kentang (1 ons),Potato Chips (1 oz),Snack/Processed,Snack,160,2.0,15.0,10.0
+Saus Tzatziki (2 sdm),Tzatziki Sauce (2 tbsp),Condiment/Dairy,Dinner,30,1.5,2.0,2.0
+Pancake (2 sedang),Pancakes (2 medium),Grain,Breakfast,180,5.0,30.0,5.0
+Sirup Maple (2 sdm),Maple Syrup (2 tbsp),Condiment,Breakfast,104,0.0,27.0,0.0
+Tautan Sosis (1 matang),Sausage Link (1 cooked),Protein/Meat,Breakfast,85,5.0,1.0,7.0
+Smoothie (Buah & Yogurt),Smoothie (Fruit & Yogurt),Beverage/Meal,Breakfast,280,12.0,55.0,3.0
+Tahu (4oz keras),Tofu (4oz firm),Protein/Vegetarian,Lunch,90,10.0,3.0,5.0
+Nasi Merah (1 cangkir dimasak),Brown Rice (1 cup cooked),Grain,Lunch,215,5.0,45.0,1.8
+Paprika (1 merah sedang),Bell Pepper (1 medium red),Vegetable,Lunch,31,1.2,6.0,0.3
+Hummus (2 sendok makan),Hummus (2 tbsp),Legume,Snack,70,2.0,4.0,5.0
+Roti Pita (1 gandum utuh),Pita Bread (1 whole wheat),Grain,Snack,170,6.0,35.0,1.5
+Potongan Daging Babi (4oz panggang),Pork Chop (4oz grilled),Protein/Meat,Dinner,220,30.0,0.0,10.0
+Kentang Tumbuk (1 cangkir),Mashed Potatoes (1 cup),Vegetable,Dinner,230,4.0,35.0,8.0
+Jagung (1 cangkir),Corn (1 cup),Vegetable,Dinner,132,4.7,30.0,1.8
+Soda (1 kaleng Coke),Soda (1 can Coke),Beverage,Snack,140,0.0,39.0,0.0
+Pretzel (1 ons),Pretzels (1 oz),Grain/Processed,Snack,110,3.0,23.0,1.0
+Keju Cheddar (1 ons),Cheddar Cheese (1 oz),Dairy,Snack,115,7.0,1.0,9.5
+Salad Caesar (dengan ayam),Caesar Salad (with chicken),Meal/Protein,Lunch,470,30.0,15.0,30.0
+Jus Jeruk (1 cangkir),Orange Juice (1 cup),Beverage,Breakfast,112,1.7,25.8,0.5
+Bacon (2 potong matang),Bacon (2 slices cooked),Protein/Meat,Breakfast,86,6.0,0.2,6.8
+Wafel (2 buatan sendiri),Waffles (2 homemade),Grain,Breakfast,220,6.0,28.0,9.0
+Pir,Pear,Fruit,Snack,101,0.6,27.0,0.2
+Dada Ayam (4oz panggang),Chicken Breast (4oz roasted),Protein/Meat,Lunch,185,35.0,0.0,4.0
+Kacang Campuran (1/4 cangkir),Mixed Nuts (1/4 cup),Nut,Snack,200,6.0,8.0,18.0
+Nila (4oz dipanggang),Tilapia (4oz baked),Protein/Fish,Dinner,110,22.0,0.0,2.5
+Asparagus (1 cangkir dikukus),Asparagus (1 cup steamed),Vegetable,Dinner,40,4.3,7.4,0.4
+Ubi Jalar (1 panggang sedang),Sweet Potato (1 medium baked),Vegetable,Dinner,103,2.3,23.6,0.2
+Popcorn (3 cangkir air-pop),Popcorn (3 cups air-popped),Grain,Snack,93,3.0,18.6,1.1
+Kismis (1/4 cangkir),Raisins (1/4 cup),Fruit,Snack,130,1.3,34.0,0.2
+Makaroni & Keju (1 cangkir),Macaroni & Cheese (1 cup),Meal/Pasta,Lunch,350,10.0,40.0,17.0
+Sup Tomat (1 kaleng),Tomato Soup (1 can),Meal/Vegetable,Lunch,170,4.0,25.0,6.0
+Sandwich Keju Panggang,Grilled Cheese Sandwich,Meal/Processed,Lunch,390,15.0,32.0,22.0
+Taco Daging Sapi (2 cangkang keras),Beef Tacos (2 hard shell),Meal/Meat,Dinner,380,18.0,28.0,22.0
+Kacang Refried (1/2 cangkir),Refried Beans (1/2 cup),Legume,Dinner,115,7.0,19.0,1.0
+Guacamole (1/4 cangkir),Guacamole (1/4 cup),Vegetable/Condiment,Dinner,90,1.0,4.0,8.0
+Semangka (1 cangkir potong dadu),Watermelon (1 cup diced),Fruit,Snack,46,0.9,11.5,0.2
+Muffin Inggris (gandum utuh),English Muffin (whole wheat),Grain,Breakfast,134,6.0,26.0,1.0
+Sandwich Selai Kacang & Jeli,Peanut Butter & Jelly Sandwich,Meal/Processed,Lunch,390,12.0,50.0,17.0
+Sup Krim Kerang (1 cangkir),Clam Chowder (1 cup),Meal/Seafood,Lunch,200,10.0,18.0,9.0
+Es Teh (Manis 16oz),Iced Tea (Sweetened 16oz),Beverage,Snack,180,0.0,46.0,0.0
+Lasagna (1 porsi daging),Lasagna (1 serving meat),Meal/Pasta,Dinner,350,20.0,30.0,17.0
+Roti Bawang Putih (1 potong),Garlic Bread (1 slice),Grain,Dinner,150,4.0,18.0,7.0
+Susu Coklat (1 gelas),Chocolate Milk (1 cup),Beverage/Dairy,Snack,200,8.0,26.0,8.0
+Roti Putih (1 potong),White Bread (1 slice),Grain,Breakfast,70,2.0,13.0,1.0
+Jeli (1 sdm anggur),Jelly (1 tbsp grape),Condiment,Breakfast,50,0.0,13.0,0.0
+Burger Vegetarian (1 patty),Veggie Burger (1 patty),Protein/Vegetarian,Lunch,120,11.0,10.0,4.0
+Roti (hamburger),Bun (hamburger),Grain,Lunch,140,4.0,26.0,2.0
+Kecap (1 sdm),Ketchup (1 tbsp),Condiment,Lunch,20,0.2,5.0,0.1
+Muffin (Blueberry 1 besar),Muffin (Blueberry 1 large),Grain/Dessert,Breakfast,380,5.0,55.0,16.0
+Kopi (dengan krim/gula),Coffee (with cream/sugar),Beverage,Breakfast,50,0.5,5.0,3.0
+Keripik Kentang (1 ons),Potato Chips (1 oz),Snack/Processed,Snack,160,2.0,15.0,10.0
+Saus Tzatziki (2 sdm),Tzatziki Sauce (2 tbsp),Condiment/Dairy,Dinner,30,1.5,2.0,2.0
+Kerang (3oz dibakar),Scallops (3oz seared),Protein/Seafood,Dinner,95,17.0,5.0,1.0
+Risotto (Jamur 1 cangkir),Risotto (Mushroom 1 cup),Meal/Grain,Dinner,250,7.0,35.0,9.0
+Salad Capres,Caprese Salad,Meal/Vegetable,Lunch,240,10.0,8.0,18.0
+Vinaigrette Balsamic (2 sendok makan),Balsamic Vinaigrette (2 tbsp),Condiment,Lunch,90,0.0,3.0,9.0
+Ceri (1 cangkir),Cherries (1 cup),Fruit,Snack,77,1.6,19.0,0.5
+Daging Kalkun (2 potong),Turkey Bacon (2 slices),Protein/Meat,Breakfast,70,6.0,1.0,5.0
+Bubur jagung (1 cangkir dimasak),Grits (1 cup cooked),Grain,Breakfast,150,3.0,32.0,1.0
+Mentega (1 sdm),Butter (1 tbsp),Condiment/Dairy,Breakfast,100,0.1,0.0,11.0
+Sub Bakso (6 inci),Meatball Sub (6 inch),Meal/Processed,Lunch,580,28.0,55.0,27.0
+Buah Kiwi (1 ukuran sedang),Kiwifruit (1 medium),Fruit,Snack,46,0.9,11.1,0.4
+Dendeng Daging Sapi (1 ons),Beef Jerky (1 oz),Snack/Processed,Snack,116,9.4,3.1,7.2
+Gambar (2 sedang),Figs (2 medium),Fruit,Snack,74,0.6,19.2,0.3
+Lobster (3oz dikukus),Lobster (3oz steamed),Protein/Seafood,Dinner,76,16.0,0.0,0.7
+Mentega Leleh (untuk lobster),Melted Butter (for lobster),Condiment,Dinner,200,0.2,0.0,22.0
+Jagung Rebus (1 besar),Corn on the Cob (1 large),Vegetable,Dinner,125,5.0,29.0,1.5
+Sup Sayur (1 kaleng),Vegetable Soup (1 can),Meal/Vegetable,Lunch,140,4.0,22.0,4.0
+Kerupuk Asin (5 kerupuk),Saltine Crackers (5 crackers),Grain/Processed,Lunch,60,1.0,10.0,1.5
+Mangga (1 cangkir irisan),Mango (1 cup slices),Fruit,Snack,99,1.4,24.7,0.6
+Kue keju (1 potong),Cheesecake (1 slice),Dessert,Snack,320,5.0,28.0,21.0
+"Pad Thai (Ayam 1,5 cangkir)",Pad Thai (Chicken 1.5 cups),Meal/Pasta,Dinner,550,25.0,60.0,22.0
+Spring Roll (sayuran 2 gulungan),Spring Roll (Veg 2 rolls),Snack/Processed,Dinner,180,4.0,25.0,7.0
+Air Kelapa (1 gelas),Coconut Water (1 cup),Beverage,Snack,46,1.7,8.9,0.5
+Kimchi (1/2 cangkir),Kimchi (1/2 cup),Vegetable,Side,22,1.7,4.0,0.4
+Sashimi (Salmon 3 buah),Sashimi (Salmon 3 pcs),Protein/Fish,Lunch,120,18.0,0.0,5.0
+Wasabi (1 sdt),Wasabi (1 tsp),Condiment,Lunch,10,0.1,2.2,0.1
+Salad Rumput Laut (1/2 cangkir),Seaweed Salad (1/2 cup),Vegetable,Lunch,60,2.0,8.0,3.0
+Sup Bawang Perancis (1 cangkir),French Onion Soup (1 cup),Meal,Lunch,150,6.0,15.0,7.0
+Crouton (1/4 cangkir),Croutons (1/4 cup),Grain,Lunch,50,1.5,7.0,2.0
+Pie Gembala (1 porsi),Shepherd's Pie (1 serving),Meal/Meat,Dinner,400,20.0,35.0,20.0
+Kacang Hijau (1/2 cangkir),Green Peas (1/2 cup),Legume,Dinner,62,4.1,11.1,0.2
+Pai Apel (1 potong),Apple Pie (1 slice),Dessert,Snack,410,3.0,58.0,19.0
+Gin & Tonik (1 minuman),Gin & Tonic (1 drink),Beverage,Snack,170,0.0,13.0,0.0
+Anggur Merah (gelas 5 ons),Red Wine (5 oz glass),Beverage,Dinner,125,0.1,3.8,0.0
+Halibut (4oz dipanggang),Halibut (4oz baked),Protein/Fish,Dinner,125,24.0,0.0,2.5
+Salad Quinoa (1 cangkir),Quinoa Salad (1 cup),Meal/Vegetarian,Lunch,260,9.0,32.0,12.0
+Limun (1 cangkir),Lemonade (1 cup),Beverage,Snack,99,0.1,26.0,0.0
+Pistachio (1 ons dikupas),Pistachios (1 oz shelled),Nut,Snack,159,5.7,7.7,12.8
+Susu Oat (1 cangkir),Oat Milk (1 cup),Beverage/Dairy-Alt,Breakfast,120,3.0,16.0,5.0
+Biskuit dan Kuah (1 porsi),Biscuits and Gravy (1 serving),Meal/Processed,Breakfast,480,10.0,45.0,28.0
+Alpukat (1/2 buah),Avocado (1/2 fruit),Fruit,Breakfast,160,2.0,8.5,14.7
+Serpihan Jagung (1 cangkir),Corn Flakes (1 cup),Grain,Breakfast,100,2.0,24.0,0.0
+Steak T-Bone (6oz),T-Bone Steak (6oz),Protein/Meat,Dinner,460,38.0,0.0,33.0
+Bayam Krim (1/2 cangkir),Creamed Spinach (1/2 cup),Vegetable,Dinner,190,5.0,8.0,16.0
+kacang pecan (1 ons),Pecans (1 oz),Nut,Snack,196,2.6,3.9,20.4
+Koktail Buah (kalengan 1 gelas),Fruit Cocktail (canned 1 cup),Fruit,Snack,110,1.0,28.0,0.0
+Ramen (Instan 1 bungkus),Ramen (Instant 1 pack),Meal/Processed,Lunch,380,9.0,53.0,14.0
+Moka Latte (16oz),Mocha Latte (16oz),Beverage,Snack,360,12.0,48.0,15.0
+Irisan Mentimun (1 cangkir),Cucumber Slices (1 cup),Vegetable,Snack,16,0.7,3.6,0.1
+Keju Feta (1 ons),Feta Cheese (1 oz),Dairy,Lunch,75,4.0,1.2,6.1
+Zaitun (Kalamata 5 besar),Olives (Kalamata 5 large),Fruit,Lunch,35,0.2,1.0,3.5
+"Alfredo Ayam (1,5 cangkir)",Chicken Alfredo (1.5 cups),Meal/Pasta,Dinner,680,35.0,45.0,38.0
+Stik roti (1 besar),Breadstick (1 large),Grain,Dinner,160,4.0,28.0,3.0
+Salad Cobb,Cobb Salad,Meal/Protein,Lunch,510,30.0,12.0,38.0
+Saus Keju Biru (2 sdm),Blue Cheese Dressing (2 tbsp),Condiment,Lunch,150,1.0,2.0,16.0
+Jeruk Mandarin (1 sedang),Mandarin Orange (1 medium),Fruit,Snack,37,0.6,9.3,0.2
+Kacang mete (1 ons panggang),Cashews (1 oz roasted),Nut,Snack,163,4.3,9.2,13.1
+Eggo Waffle (2 wafel),Eggo Waffle (2 waffles),Grain/Processed,Breakfast,180,4.0,30.0,5.0
+Soda Diet (1 kaleng),Diet Soda (1 can),Beverage,Lunch,0,0.0,0.0,0.0
+Sandwich Babi yang Menarik,Pulled Pork Sandwich,Meal/Meat,Lunch,480,25.0,48.0,20.0
+Kacang Macadamia (1 ons),Macadamia Nuts (1 oz),Nut,Snack,204,2.2,3.9,21.5
+Kue Kepiting (2 sedang),Crab Cakes (2 medium),Meal/Seafood,Dinner,340,20.0,18.0,20.0
+Saus Tartar (2 sdm),Tartar Sauce (2 tbsp),Condiment,Dinner,60,0.2,2.0,5.5
+Lemon Bar (1 persegi),Lemon Bar (1 square),Dessert,Snack,150,1.5,22.0,6.0
+Susu Almond (tanpa pemanis 1 gelas),Almond Milk (Unsweetened 1 cup),Beverage/Dairy-Alt,Breakfast,30,1.0,1.0,2.5
+"Nasi Krispies (1,5 cangkir)",Rice Krispies (1.5 cups),Grain,Breakfast,160,3.0,37.0,0.5
+Gula (1 sdt untuk sereal),Sugar (1 tsp for cereal),Condiment,Breakfast,16,0.0,4.0,0.0
+Tuna (Kalengan 3oz dalam air),Tuna (Canned 3oz in water),Protein/Fish,Lunch,90,20.0,0.0,1.0
+Mayones (1 sdm),Mayonnaise (1 tbsp),Condiment,Lunch,90,0.1,0.1,10.0
+Acar (1 tombak adas),Pickle (1 spear dill),Vegetable,Lunch,5,0.2,1.0,0.1
+Bisque Lobster (1 cangkir),Lobster Bisque (1 cup),Meal/Seafood,Lunch,250,8.0,12.0,18.0
+Sandwich Ruben,Reuben Sandwich,Meal/Processed,Lunch,650,28.0,35.0,40.0
+Sauerkraut (1/4 cangkir sisi),Sauerkraut (1/4 cup side),Vegetable,Lunch,7,0.3,1.5,0.0
+Jamur (Putih 1 cangkir diiris),Mushroom (White 1 cup sliced),Vegetable,Dinner,15,2.2,2.3,0.2
+Susu Kedelai (Asli 1 gelas),Soy Milk (Original 1 cup),Beverage/Dairy-Alt,Breakfast,110,8.0,9.0,4.5
+"Ayam Tikka Masala (1,5 cangkir)",Chicken Tikka Masala (1.5 cups),Meal/Meat,Dinner,480,30.0,20.0,30.0
+Roti Naan (1 buah),Naan Bread (1 piece),Grain,Dinner,260,8.0,45.0,5.0
+Salad Mentimun (1/2 cangkir),Cucumber Salad (1/2 cup),Vegetable,Dinner,40,1.0,5.0,2.0
+Vodka Soda (1 minuman),Vodka Soda (1 drink),Beverage,Snack,100,0.0,0.0,0.0
+Croissant Coklat,Chocolate Croissant,Dessert,Breakfast,350,6.0,40.0,19.0
+Ayam Asam Manis (1 cangkir),Sweet & Sour Chicken (1 cup),Meal/Processed,Dinner,380,18.0,45.0,15.0
+Sup Tetes Telur (1 cangkir),Egg Drop Soup (1 cup),Meal/Vegetable,Dinner,65,5.0,6.0,2.0
+Keju Tali (1 batang),String Cheese (1 stick),Dairy,Snack,80,6.0,1.0,6.0
+Burger Kalkun (1 patty),Turkey Burger (1 patty),Protein/Meat,Lunch,160,22.0,2.0,8.0
+Salad Kentang (1/2 cangkir),Potato Salad (1/2 cup),Meal/Vegetable,Lunch,180,2.0,19.0,11.0
+Jus Cranberry (1 cangkir),Cranberry Juice (1 cup),Beverage,Breakfast,130,0.0,33.0,0.0
+Ayam Piccata (1 porsi),Chicken Piccata (1 serving),Meal/Meat,Dinner,350,30.0,10.0,20.0
+Pasta Rambut Malaikat (1 cangkir),Angel Hair Pasta (1 cup),Grain,Dinner,200,7.0,42.0,1.0
+Minyak Zaitun (1 sdm),Olive Oil (1 tbsp),Condiment,Dinner,120,0.0,0.0,14.0
+Bawang putih (1 siung),Garlic (1 clove),Vegetable,Dinner,4,0.2,0.9,0.0
+Salami (3 potong),Salami (3 slices),Protein/Processed,Snack,110,6.0,1.0,9.0
+Keju Provolone (1 potong),Provolone Cheese (1 slice),Dairy,Snack,100,7.0,1.0,8.0
+Ginger Ale (1 kaleng),Ginger Ale (1 can),Beverage,Snack,124,0.0,32.0,0.0
+Udang Scampi (1 cangkir),Shrimp Scampi (1 cup),Meal/Seafood,Dinner,380,22.0,40.0,15.0
+Tiramisu (1 potong),Tiramisu (1 slice),Dessert,Snack,450,7.0,42.0,28.0
+Batangan Sereal (Buah),Cereal Bar (Fruit),Snack/Processed,Breakfast,140,2.0,30.0,3.0
+Daging Sapi Parmesan (1 porsi),Veal Parmesan (1 serving),Meal/Meat,Dinner,550,40.0,30.0,30.0
+Spageti (samping),Spaghetti (side),Grain,Dinner,100,3.5,21.0,0.5
+Cokelat Panas (1 cangkir),Hot Chocolate (1 cup),Beverage,Snack,200,3.0,30.0,8.0
+Udang Kelapa (5 buah),Coconut Shrimp (5 pcs),Meal/Seafood,Dinner,320,10.0,25.0,20.0
+Saus Cabai Manis (2 sdm),Sweet Chili Sauce (2 tbsp),Condiment,Dinner,70,0.0,17.0,0.0
+Anggur Putih (gelas 5 ons),White Wine (5 oz glass),Beverage,Dinner,121,0.1,3.8,0.0
+Campuran Jejak (1/4 cangkir),Trail Mix (1/4 cup),Snack/Processed,Snack,190,5.0,20.0,12.0
+Cincin Bawang (6 cincin),Onion Rings (6 rings),Snack/Processed,Snack,280,4.0,30.0,16.0
+Telur Rebus (1 besar),Poached Egg (1 large),Protein,Breakfast,72,6.3,0.4,4.8
+Bacon Kanada (2 potong),Canadian Bacon (2 slices),Protein/Meat,Breakfast,80,12.0,1.0,3.0
+Telur Benediktus (1 porsi),Eggs Benedict (1 serving),Meal/Protein,Breakfast,600,25.0,30.0,40.0
+Saus Hollandaise (2 sdm),Hollandaise Sauce (2 tbsp),Condiment,Breakfast,110,1.0,0.5,12.0
+Saus Artichoke Bayam (1/4 cangkir),Spinach Artichoke Dip (1/4 cup),Snack/Processed,Snack,160,5.0,6.0,14.0
+Keripik Tortilla (1 ons),Tortilla Chips (1 oz),Snack/Processed,Snack,140,2.0,19.0,7.0
+Kebab Ayam (2 tusuk sate),Chicken Kebab (2 skewers),Meal/Meat,Dinner,280,30.0,8.0,14.0
+Paprika & Bawang Bombai (tumis),Bell Peppers & Onions (sautéed),Vegetable,Dinner,60,1.5,10.0,2.0
+Bungkus Hummus (besar),Hummus Wrap (large),Meal/Vegetarian,Lunch,450,15.0,60.0,18.0
+Kombucha (1 cangkir),Kombucha (1 cup),Beverage,Snack,30,0.0,7.0,0.0
+"Stroganoff Daging Sapi (1,5 cangkir)",Beef Stroganoff (1.5 cups),Meal/Pasta,Dinner,550,30.0,40.0,28.0
+Mie Telur (1 cangkir dimasak),Egg Noodles (1 cup cooked),Grain,Dinner,220,8.0,40.0,3.0
+Keju Cottage (1 cangkir rendah lemak),Cottage Cheese (1 cup low fat),Dairy,Lunch,160,28.0,6.0,2.5
+Tomat (1 iris sedang),Tomato (1 medium sliced),Vegetable,Lunch,22,1.1,4.8,0.2
+Lada Hitam (1 sdt),Black Pepper (1 tsp),Condiment,Lunch,6,0.2,1.5,0.1
+Puding Coklat (1/2 cangkir),Chocolate Pudding (1/2 cup),Dessert,Snack,150,2.0,28.0,4.0
+Makarel (3oz dimasak),Mackerel (3oz cooked),Protein/Fish,Dinner,175,16.0,0.0,12.0
+Collard Greens (1 cangkir dimasak),Collard Greens (1 cup cooked),Vegetable,Dinner,60,5.0,10.0,1.0
+Ham (3oz deli diiris),Ham (3oz deli sliced),Protein/Meat,Lunch,110,16.0,2.0,4.0
+Keju Swiss (1 potong),Swiss Cheese (1 slice),Dairy,Lunch,106,7.6,1.0,8.0
+Roti Gandum Hitam (1 potong),Rye Bread (1 slice),Grain,Lunch,83,2.7,15.5,1.1
+Sup Daun Bawang Kentang (1 cangkir),Potato Leek Soup (1 cup),Meal/Vegetable,Lunch,180,4.0,25.0,7.0
+Keju Brie (1 ons),Brie Cheese (1 oz),Dairy,Snack,95,6.0,0.1,7.9
+Kerupuk Air (5 kerupuk),Water Cracker (5 crackers),Grain/Processed,Snack,70,1.5,12.0,1.5
+Jeruk bali (1/2 sedang),Grapefruit (1/2 medium),Fruit,Breakfast,52,1.1,13.2,0.2
+Sedotan Sayuran (1 ons),Veggie Straws (1 oz),Snack/Processed,Snack,130,1.0,17.0,7.0
+Taco Ikan (2 taco),Fish Tacos (2 tacos),Meal/Fish,Dinner,420,25.0,40.0,18.0
+Selada Kubis (samping),Cabbage Slaw (side),Vegetable,Dinner,60,1.0,8.0,3.0
+Jeruk Nipis (jus 1 buah),Lime (juice of 1),Condiment,Dinner,11,0.2,3.7,0.0
+Bir (12 ons ringan),Beer (12 oz light),Beverage,Snack,103,0.9,5.8,0.0
+Denmark (Keju 1 sedang),Danish (Cheese 1 medium),Dessert,Breakfast,340,7.0,38.0,18.0
+Kefir (biasa 1 gelas),Kefir (Plain 1 cup),Beverage/Dairy,Breakfast,104,10.0,10.0,2.5
+Gnocchi (1 cangkir),Gnocchi (1 cup),Meal/Pasta,Dinner,210,4.5,45.0,1.5
+Saus Pesto (1/4 cangkir),Pesto Sauce (1/4 cup),Condiment,Dinner,260,5.0,4.0,26.0
+Kacang Pinus (1 sdm),Pine Nuts (1 tbsp),Nut,Dinner,95,2.0,2.0,10.0
+Chai Latte (12 ons),Chai Latte (12 oz),Beverage,Snack,190,7.0,32.0,4.0
+Manicotti (keju 2 kulit),Manicotti (2 shells cheese),Meal/Pasta,Dinner,380,20.0,35.0,18.0
+Sosis Italia (1 tautan),Italian Sausage (1 link),Protein/Meat,Dinner,200,12.0,3.0,16.0
+Bengkuang (1 cangkir batang),Jicama (1 cup sticks),Vegetable,Snack,46,0.9,10.6,0.1
+Bubuk Cabai (1 sdt),Chili Powder (1 tsp),Condiment,Snack,8,0.3,1.4,0.4
+Semut di Batang Kayu (4 pcs),Ants on a Log (4 pcs),Snack,Snack,180,6.0,12.0,12.0
+Sup Kacang Belah (1 cangkir),Split Pea Soup (1 cup),Meal/Legume,Lunch,180,11.0,30.0,2.0
+Croissant Ham & Keju,Ham & Cheese Croissant,Meal/Processed,Breakfast,400,15.0,35.0,22.0
+Espresso (tembakan ganda),Espresso (double shot),Beverage,Breakfast,5,0.5,0.0,0.1
+Keju Ricotta (1/4 cangkir),Ricotta Cheese (1/4 cup),Dairy,Dinner,85,5.5,2.5,6.0
+Sup Ayam & Nasi (1 kaleng),Chicken & Rice Soup (1 can),Meal/Processed,Lunch,130,7.0,18.0,3.0
+Garam (1/4 sdt),Salt (1/4 tsp),Condiment,Dinner,0,0.0,0.0,0.0
+Jambu biji,Guava,Fruit,Snack,68,2.6,14.3,0.9
+Klub sandwich,Club Sandwich,Meal/Processed,Lunch,580,35.0,40.0,30.0
+Acar (1 adas utuh),Pickle (1 whole dill),Vegetable,Snack,17,0.8,3.7,0.2
+Cabai Kalkun (1 cangkir),Turkey Chili (1 cup),Meal/Meat,Dinner,250,22.0,25.0,7.0
+Krim Asam (2 sdm),Sour Cream (2 tbsp),Condiment/Dairy,Dinner,60,0.8,1.3,5.8
+Keju Parut (Cheddar 1/4 cangkir),Shredded Cheese (Cheddar 1/4 cup),Dairy,Dinner,115,7.0,1.0,9.5
+Matcha Latte (12 ons),Matcha Latte (12 oz),Beverage,Snack,180,6.0,28.0,5.0
+Donat Coklat (1 sedang),Chocolate Donut (1 medium),Dessert,Breakfast,300,4.0,35.0,17.0
+Tuna Meleleh,Tuna Melt,Meal/Processed,Lunch,450,25.0,32.0,25.0
+Sari Apel (1 cangkir),Apple Cider (1 cup),Beverage,Snack,117,0.1,29.0,0.3
+Burrito Daging Sapi (besar),Beef Burrito (large),Meal/Processed,Dinner,650,30.0,70.0,28.0
+Pico de Gallo (1/4 cangkir),Pico de Gallo (1/4 cup),Condiment,Dinner,15,0.5,3.0,0.0
+Tortilla Jagung (1 sedang),Corn Tortilla (1 medium),Grain,Dinner,52,1.4,11.2,0.7
+Kerang (3oz dikukus),Mussels (3oz steamed),Protein/Seafood,Dinner,146,20.0,6.0,4.0
+Saus Anggur Putih (1/4 cangkir),White Wine Sauce (1/4 cup),Condiment,Dinner,80,1.0,4.0,6.0
+Roti Perancis (2 potong),French Bread (2 slices),Grain,Dinner,180,6.0,36.0,1.0
+Blackberry (1 cangkir),Blackberries (1 cup),Fruit,Snack,62,2.0,13.8,0.7
+Keju Denmark,Cheese Danish,Dessert,Breakfast,340,7.0,38.0,18.0
+Sandwich Salad Ayam,Chicken Salad Sandwich,Meal/Processed,Lunch,420,20.0,35.0,20.0
+Kedelai (2 ons),Soyrizo (2 oz),Protein/Vegetarian,Breakfast,140,10.0,6.0,9.0
+Hash Brown (1 cangkir),Hash Browns (1 cup),Vegetable,Breakfast,330,3.0,38.0,19.0
+Kecap (1 bungkus),Ketchup (1 packet),Condiment,Breakfast,10,0.1,2.5,0.0
+Philly Cheesesteak (6 inci),Philly Cheesesteak (6 inch),Meal/Processed,Lunch,500,25.0,40.0,28.0
+Jagoan Keju (2 sdm),Cheese Whiz (2 tbsp),Condiment/Processed,Lunch,90,4.0,3.0,7.0
+Bawang bombay (tumis 1/4 cangkir),Onions (sautéed 1/4 cup),Vegetable,Lunch,30,0.5,5.0,1.0
+Raspberry (1 cangkir),Raspberries (1 cup),Fruit,Snack,64,1.5,14.7,0.8
+Bubur jagung keju (1 cangkir),Cheesy Grits (1 cup),Meal/Grain,Breakfast,210,6.0,34.0,6.0
+Collard Greens (dengan ham hock),Collard Greens (with ham hock),Vegetable,Dinner,180,10.0,15.0,9.0
+Okra Goreng (1 cangkir),Fried Okra (1 cup),Vegetable,Dinner,220,4.0,25.0,12.0
+Teh Manis (16 ons),Sweet Tea (16 oz),Beverage,Lunch,180,0.0,46.0,0.0
+Gyro (1 sandwich),Gyro (1 sandwich),Meal/Meat,Dinner,600,25.0,55.0,30.0
+Roti Pita (Putih 1 besar),Pita Bread (White 1 large),Grain,Dinner,220,7.0,45.0,2.0
+Saus Tzatziki (2 sdm),Tzatziki Sauce (2 tbsp),Condiment,Dinner,30,1.5,2.0,2.0
+Baklava (1 buah),Baklava (1 piece),Dessert,Snack,280,3.0,30.0,18.0
+Kelapa (diparut 1/4 gelas),Coconut (shredded 1/4 cup),Fruit,Snack,110,1.0,4.5,10.5
+S'more (1 porsi),S'more (1 serving),Dessert,Snack,140,2.0,25.0,4.0
+Graham Cracker (1 persegi panjang besar),Graham Cracker (1 large rectangle),Grain/Processed,Snack,60,1.0,11.0,1.5
+Marshmallow (1 besar),Marshmallow (1 large),Dessert,Snack,23,0.1,5.8,0.0
+Cokelat (Hershey's bar 1 segmen),Chocolate (Hershey's bar 1 segment),Dessert,Snack,25,0.3,3.0,1.5
+Sandwich Parm Ayam,Chicken Parm Sandwich,Meal/Processed,Lunch,650,40.0,55.0,30.0
+Mozzarella (1 potong),Mozzarella (1 slice),Dairy,Lunch,80,6.0,1.0,6.0
+Roti Gulung (hoagie),Bread Roll (hoagie),Grain,Lunch,200,6.0,38.0,2.0
+Artichoke (1 sedang dikukus),Artichoke (1 medium steamed),Vegetable,Dinner,60,4.2,13.4,0.2
+Mayones (1 sdm untuk pencelupan),Mayonnaise (1 tbsp for dipping),Condiment,Dinner,90,0.1,0.1,10.0
+Cumi (goreng 3oz),Calamari (fried 3oz),Meal/Seafood,Dinner,150,13.0,8.0,7.0
+Irisan Lemon (untuk cumi),Lemon Wedge (for calamari),Condiment,Dinner,3,0.1,1.0,0.0
+Root Beer (1 kaleng),Root Beer (1 can),Beverage,Snack,150,0.0,40.0,0.0
+McNugget Ayam (6 buah),Chicken McNuggets (6 pcs),Meal/Processed,Lunch,270,15.0,16.0,16.0
+Saus BBQ (2 sdm),BBQ Sauce (2 tbsp),Condiment,Lunch,60,0.5,15.0,0.0
+Madu (1 sdm),Honey (1 tbsp),Condiment,Breakfast,64,0.1,17.3,0.0
+Perebutan Tahu,Tofu Scramble,Meal/Vegetarian,Breakfast,250,20.0,8.0,16.0
+Kunyit (1 sdt),Turmeric (1 tsp),Condiment,Breakfast,9,0.3,1.9,0.1
+Ragi Nutrisi (1 sdm),Nutritional Yeast (1 tbsp),Condiment,Breakfast,20,3.0,2.0,0.0
+Seitan (3oz),Seitan (3oz),Protein/Vegetarian,Dinner,90,18.0,4.0,1.0
+Kaldu Sayuran (1 gelas),Vegetable Broth (1 cup),Beverage,Dinner,15,1.0,3.0,0.0
+Kembang Kol tumbuk (1 cangkir),Mashed Cauliflower (1 cup),Vegetable,Dinner,140,5.0,12.0,8.0
+Saus Kacang (2 sdm),Peanut Sauce (2 tbsp),Condiment,Dinner,80,2.0,4.0,6.0
+Tempe (3oz),Tempeh (3oz),Protein/Vegetarian,Lunch,160,16.0,8.0,9.0
+Sauerkraut (1/2 cangkir),Sauerkraut (1/2 cup),Vegetable,Lunch,14,0.7,3.1,0.1
+Roti Renyah Gandum Hitam (2 potong),Rye Crispbread (2 slices),Grain,Lunch,70,2.0,14.0,0.5
+Caper (1 sdm),Capers (1 tbsp),Condiment,Dinner,2,0.2,0.4,0.1
+Hati Ayam (2 ons dimasak),Chicken Liver (2 oz cooked),Protein/Meat,Dinner,91,13.6,0.6,3.6
+Bawang bombay (1/2 cangkir cincang mentah),Onion (1/2 cup raw chopped),Vegetable,Dinner,32,0.9,7.5,0.1
+Bok Choy (1 cangkir dikukus),Bok Choy (1 cup steamed),Vegetable,Dinner,10,1.5,2.0,0.1
+Beruang Bergetah (10 buah),Gummy Bears (10 pcs),Snack/Dessert,Snack,100,2.0,22.0,0.0
+"Wiski (1,5 ons suntikan)",Whiskey (1.5 oz shot),Beverage,Snack,105,0.0,0.1,0.0
+Kurma (2 Medjool ukuran sedang),Dates (2 medium Medjool),Fruit,Snack,133,0.8,36.0,0.1
+Tahini (1 sdm),Tahini (1 tbsp),Condiment,Snack,89,2.6,3.2,8.0
+Buncis (1/2 cangkir kalengan),Chickpeas (1/2 cup canned),Legume,Lunch,135,7.0,22.0,2.0
+Selada (Romaine 2 cangkir),Lettuce (Romaine 2 cups),Vegetable,Lunch,16,1.0,3.0,0.3
+Saus Italia (2 sdm),Italian Dressing (2 tbsp),Condiment,Lunch,70,0.0,3.0,7.0
+Crouton (1/4 cangkir),Croutons (1/4 cup),Grain,Lunch,50,1.5,7.0,2.0
+Sosis Kalkun (1 patty),Turkey Sausage (1 patty),Protein/Meat,Breakfast,70,9.0,1.0,4.0
+Sirup Maple (1 sdm),Maple Syrup (1 tbsp),Condiment,Breakfast,52,0.0,13.5,0.0
+Quesadilla (Keju 1 sedang),Quesadilla (Cheese 1 medium),Meal/Processed,Lunch,400,18.0,35.0,22.0
+Krim Asam (1 sdm),Sour Cream (1 tbsp),Condiment/Dairy,Lunch,30,0.4,0.6,2.9
+Salsa (2 sdm),Salsa (2 tbsp),Condiment,Lunch,10,0.5,2.0,0.0
+Kubis Merah (1 cangkir mentah),Red Cabbage (1 cup raw),Vegetable,Dinner,22,1.1,5.2,0.1
+Bebek (3oz panggang),Duck (3oz roasted),Protein/Meat,Dinner,285,16.0,0.0,24.0
+Saus Jeruk (1/4 cangkir untuk bebek),Orange Sauce (1/4 cup for duck),Condiment,Dinner,90,0.5,22.0,0.0
+Nasi Liar (1 cangkir dimasak),Wild Rice (1 cup cooked),Grain,Dinner,166,6.5,35.0,0.6
+Cupcake (Vanila 1 sedang),Cupcake (Vanilla 1 medium),Dessert,Snack,240,2.0,35.0,11.0
+Frosting (Vanila 2 sdm),Frosting (Vanilla 2 tbsp),Condiment,Snack,140,0.0,22.0,6.0
+Saus Pedas (1 sdt Tabasco),Hot Sauce (1 tsp Tabasco),Condiment,Breakfast,0,0.0,0.0,0.0
+Bison Burger (1 patty),Bison Burger (1 patty),Protein/Meat,Lunch,150,22.0,0.0,7.0
+Roti Pretzel (1 sedang),Pretzel Bun (1 medium),Grain,Lunch,230,8.0,45.0,2.0
+Mustard Pedas (1 sdm),Spicy Mustard (1 tbsp),Condiment,Lunch,10,0.5,1.0,0.5
+Pasta Salad (1 cangkir),Pasta Salad (1 cup),Meal/Pasta,Lunch,280,8.0,30.0,14.0
+Salami (3 potong),Salami (3 slices),Protein/Processed,Lunch,110,6.0,1.0,9.0
+Pepperoncini (2 paprika),Pepperoncini (2 peppers),Vegetable,Lunch,10,0.5,2.0,0.0
+Santan (1/4 cangkir kalengan),Coconut Milk (1/4 cup canned),Condiment,Dinner,111,1.1,2.9,11.6
+Pasta Kari Hijau (1 sdm),Green Curry Paste (1 tbsp),Condiment,Dinner,30,0.5,2.0,2.5
+Paha Ayam (1 panggang),Chicken Thigh (1 roasted),Protein/Meat,Dinner,210,24.0,0.0,13.0
+Nasi Melati (1 cangkir dimasak),Jasmine Rice (1 cup cooked),Grain,Dinner,205,4.3,45.0,0.4
+Es Teh Thailand (1 gelas),Thai Iced Tea (1 glass),Beverage,Snack,250,3.0,35.0,12.0
+Pepaya (1 cangkir kubus),Papaya (1 cup cubes),Fruit,Snack,62,0.6,15.7,0.4
+Air Jeruk Nipis (1 sdm),Lime Juice (1 tbsp),Condiment,Snack,4,0.1,1.3,0.0
+Salad Makaroni (1 cangkir),Macaroni Salad (1 cup),Meal/Pasta,Lunch,380,8.0,30.0,25.0
+Seledri (1 batang),Celery (1 stalk),Vegetable,Lunch,6,0.3,1.2,0.1
+Keju Biru (1 ons),Blue Cheese (1 oz),Dairy,Snack,100,6.0,0.7,8.0
+Cokelat Hitam (1 ons 70%),Dark Chocolate (1 oz 70%),Dessert,Snack,170,2.2,13.0,12.0
+Acai Bowl (1 porsi),Acai Bowl (1 serving),Meal/Fruit,Breakfast,350,5.0,60.0,12.0
+Granola (1/4 cangkir topping),Granola (1/4 cup topping),Grain,Breakfast,120,3.0,15.0,6.0
+Serpihan Kelapa (1 sdm topping),Coconut Flakes (1 tbsp topping),Fruit,Breakfast,35,0.3,1.5,3.3
+Madu (1 sdt gerimis),Honey (1 tsp drizzle),Condiment,Breakfast,21,0.0,5.8,0.0
+Koktail Udang (4 udang besar),Shrimp Cocktail (4 large shrimp),Protein/Seafood,Snack,60,10.0,1.0,1.0
+Saus Koktail (2 sdm),Cocktail Sauce (2 tbsp),Condiment,Snack,30,0.5,7.0,0.0
+Roti Babi (1 dikukus),Pork Bun (1 steamed),Meal/Processed,Lunch,220,8.0,30.0,8.0
+Dim Sum (Siu Mai 3 pcs),Dim Sum (Siu Mai 3 pcs),Meal/Processed,Lunch,180,12.0,10.0,10.0
+Kecap asin (1 sdm untuk celupan),Soy Sauce (1 tbsp for dipping),Condiment,Lunch,9,1.0,1.0,0.0
+Tiram (1 sedang mentah),Oyster (1 medium raw),Protein/Seafood,Dinner,8,1.0,0.5,0.2
+Saus Mignonette (1 sdm),Mignonette Sauce (1 tbsp),Condiment,Dinner,5,0.0,1.0,0.0
+Daging Sapi Pho (1 mangkuk besar),Beef Pho (1 large bowl),Meal/Soup,Dinner,450,30.0,55.0,12.0
+Tauge (1/4 cangkir hiasan),Bean Sprouts (1/4 cup garnish),Vegetable,Dinner,8,0.8,1.5,0.1
+Kemangi Thailand (hiasan),Thai Basil (garnish),Condiment,Dinner,1,0.1,0.0,0.0
+Irisan Jeruk Nipis (hiasan),Lime Wedge (garnish),Condiment,Dinner,3,0.1,1.0,0.0
+Jalapeno (1 sdm diiris),Jalapeno (1 tbsp sliced),Vegetable,Dinner,4,0.1,0.8,0.1
+Saus Hoisin (1 sdm),Hoisin Sauce (1 tbsp),Condiment,Dinner,35,0.3,8.0,0.2
+Sriracha (1 sdt),Sriracha (1 tsp),Condiment,Dinner,5,0.1,1.0,0.1
+Krep (1 polos),Crepe (1 plain),Grain,Breakfast,90,3.5,14.0,2.0
+Nutella (1 sdm),Nutella (1 tbsp),Condiment,Breakfast,100,1.5,11.0,6.0
+Gula Bubuk (1 sdt),Powdered Sugar (1 tsp),Condiment,Breakfast,10,0.0,2.5,0.0
+Demi (3 ons),Sake (3 oz),Beverage,Dinner,117,0.4,3.8,0.0
+Edamame (dalam pod 1 cangkir),Edamame (in pod 1 cup),Legume,Snack,120,11.0,9.0,5.0
+Garam Laut (kasar 1/4 sdt),Sea Salt (coarse 1/4 tsp),Condiment,Snack,0,0.0,0.0,0.0
+"Biryani (Ayam 1,5 cangkir)",Biryani (Chicken 1.5 cups),Meal/Meat,Dinner,520,28.0,60.0,18.0
+Raita (2 sdm),Raita (2 tbsp),Condiment/Dairy,Dinner,30,1.0,2.0,2.0
+Lassi (Mangga 1 cangkir),Lassi (Mango 1 cup),Beverage,Snack,180,5.0,30.0,4.0
+Samosa (1 potong sayur),Samosa (1 piece vegetable),Snack/Processed,Snack,130,2.0,18.0,6.0
+Asam jawa Chutney (1 sdm),Tamarind Chutney (1 tbsp),Condiment,Snack,20,0.1,5.0,0.0
+Mint Chutney (1 sdm),Mint Chutney (1 tbsp),Condiment,Snack,5,0.2,0.5,0.0
+Pani Puri (6 buah),Pani Puri (6 pcs),Snack/Processed,Snack,200,4.0,35.0,5.0
+Buah Markisa (1 buah),Passion Fruit (1 fruit),Fruit,Snack,17,0.4,4.2,0.1
+Kimchi Jjigae (1 mangkuk),Kimchi Jjigae (1 bowl),Meal/Soup,Dinner,350,15.0,20.0,22.0
+Tahu Sutra (3 ons dalam sup),Silken Tofu (3oz in soup),Protein/Vegetarian,Dinner,45,5.0,2.0,2.5
+Perut Babi (1 ons dalam sup),Pork Belly (1 oz in soup),Protein/Meat,Dinner,145,3.0,0.0,15.0
+Gochugaru (1 sdt),Gochugaru (1 tsp),Condiment,Dinner,10,0.3,1.8,0.3
+Gochujang (1 sdm),Gochujang (1 tbsp),Condiment,Dinner,30,0.5,6.0,0.0
+Minyak Wijen (1 sdt),Sesame Oil (1 tsp),Condiment,Dinner,40,0.0,0.0,4.5
+Kecap Ikan (1 sdt),Fish Sauce (1 tsp),Condiment,Dinner,5,0.4,0.5,0.0
+Daun Bawang (1 sdm hiasan),Green Onion (1 tbsp garnish),Vegetable,Dinner,3,0.2,0.7,0.0
+Kombucha (16 ons),Kombucha (16 oz),Beverage,Snack,60,0.0,14.0,0.0
+Daging Sapi Wellington (1 potong),Beef Wellington (1 slice),Meal/Meat,Dinner,600,30.0,35.0,38.0
+Pate (Jamur 2 sdm),Pate (Mushroom 2 tbsp),Condiment,Dinner,70,1.0,2.0,7.0
+Puff Pastry (bungkus 1 ons),Puff Pastry (1 oz wrapper),Grain,Dinner,115,1.5,9.0,8.0
+Prosciutto (1 potong),Prosciutto (1 slice),Protein/Meat,Dinner,35,4.0,0.0,2.5
+Asparagus (6 batang dipanggang),Asparagus (6 spears roasted),Vegetable,Dinner,40,4.0,4.0,2.0
+Saus Hollandaise (1 sdm),Hollandaise Sauce (1 tbsp),Condiment,Dinner,55,0.5,0.2,6.0
+Flan (1 potong),Flan (1 slice),Dessert,Snack,220,6.0,35.0,7.0
+Saus Karamel (1 sdm),Caramel Sauce (1 tbsp),Condiment,Snack,60,0.0,13.0,1.0
+Bubur (1 cangkir polos),Congee (1 cup plain),Meal/Grain,Breakfast,130,2.5,28.0,1.0
+Acar Lobak (1/4 cangkir),Pickled Radish (1/4 cup),Vegetable,Breakfast,15,0.5,3.0,0.0
+Abon Babi (1 sdm),Pork Floss (1 tbsp),Protein/Meat,Breakfast,50,4.0,3.0,2.0
+Century Egg (1 butir telur),Century Egg (1 egg),Protein,Breakfast,100,7.0,1.0,7.0
+Arugula (2 cangkir),Arugula (2 cups),Vegetable,Lunch,10,1.0,0.8,0.2
+Keju Kambing (1 ons),Goat Cheese (1 oz),Dairy,Lunch,103,6.1,0.1,8.5
+Bit (1/2 cangkir panggang),Beets (1/2 cup roasted),Vegetable,Lunch,30,0.8,6.8,0.1
+Kenari (1 sdm cincang),Walnuts (1 tbsp chopped),Nut,Lunch,46,1.1,1.0,4.6
+Glasir Balsamic (1 sdm),Balsamic Glaze (1 tbsp),Condiment,Lunch,40,0.0,9.0,0.0
+Bobotie (1 porsi),Bobotie (1 serving),Meal/Meat,Dinner,450,25.0,30.0,25.0
+Nasi Kuning (1 gelas),Yellow Rice (1 cup),Grain,Dinner,230,4.0,50.0,1.0
+Chutney (Mangga 1 sdm),Chutney (Mango 1 tbsp),Condiment,Dinner,45,0.1,11.0,0.1
+Puding Malva (1 potong),Malva Pudding (1 slice),Dessert,Snack,380,5.0,60.0,14.0
+Puding (1/4 cangkir),Custard (1/4 cup),Condiment,Snack,80,3.0,10.0,3.0
+Teh Gelembung (teh susu 16 ons),Bubble Tea (16 oz milk tea),Beverage,Snack,320,2.0,70.0,4.0
+Mutiara Tapioka (1/4 cangkir boba),Tapioca Pearls (1/4 cup boba),Condiment,Snack,100,0.0,25.0,0.0
+"Paella (1,5 cangkir makanan laut)",Paella (1.5 cups seafood),Meal/Rice,Dinner,550,30.0,70.0,18.0
+Chorizo ​​(1 ons dalam paella),Chorizo (1 oz in paella),Protein/Meat,Dinner,130,6.0,1.0,11.0
+Kunyit (sejumput),Saffron (pinch),Condiment,Dinner,1,0.0,0.1,0.0
+Aioli (Bawang putih 1 sdm),Aioli (Garlic 1 tbsp),Condiment,Dinner,95,0.1,0.5,10.5
+Gazpacho (1 cangkir),Gazpacho (1 cup),Meal/Soup,Lunch,90,2.0,12.0,4.0
+Crouton (Bawang Putih 1/4 cangkir),Croutons (Garlic 1/4 cup),Grain,Lunch,50,1.5,7.0,2.0
+Minyak Zaitun (1 sdt hiasan),Olive Oil (1 tsp garnish),Condiment,Lunch,40,0.0,0.0,4.5
+Churros (2 batang),Churros (2 sticks),Dessert,Snack,240,3.0,30.0,12.0
+Saus Coklat (1 sdm celupan),Chocolate Sauce (1 tbsp dipping),Condiment,Snack,50,0.5,10.0,1.5
+Gula Kayu Manis (1 sdt),Cinnamon Sugar (1 tsp),Condiment,Snack,20,0.0,5.0,0.0
+Horchata (1 cangkir),Horchata (1 cup),Beverage,Snack,140,2.0,25.0,3.0
+Ceviche (1 cangkir ikan),Ceviche (1 cup fish),Meal/Fish,Lunch,180,25.0,15.0,2.0
+Bawang Merah (1/4 cangkir dalam ceviche),Red Onion (1/4 cup in ceviche),Vegetable,Lunch,16,0.3,3.7,0.0
+Ketumbar (2 sdm hiasan),Cilantro (2 tbsp garnish),Condiment,Lunch,1,0.1,0.0,0.0
+Kacang Jagung (1 ons),Corn Nuts (1 oz),Snack/Processed,Snack,130,2.0,23.0,4.0
+"Lomo Saltado (1,5 cangkir)",Lomo Saltado (1.5 cups),Meal/Meat,Dinner,500,35.0,45.0,22.0
+Kentang Goreng (sebagai pendamping),French Fries (as side),Vegetable/Processed,Dinner,200,2.0,25.0,10.0
+Kecap (1 sdm di tumis),Soy Sauce (1 tbsp in stir-fry),Condiment,Dinner,9,1.0,1.0,0.0
+Pasta Aji Amarillo (1 sdt),Aji Amarillo Paste (1 tsp),Condiment,Dinner,5,0.1,1.0,0.0
+Pisco Sour (1 minuman),Pisco Sour (1 drink),Beverage,Snack,250,1.0,25.0,0.0
+Putih Telur (dalam minuman),Egg White (in drink),Condiment,Snack,17,3.6,0.2,0.0
+Angostura Pahit (tanda hubung),Angostura Bitters (dash),Condiment,Snack,5,0.0,0.0,0.0
+Alfajores (1 kue),Alfajores (1 cookie),Dessert,Snack,180,2.0,22.0,10.0
+Dulce de Leche (1 sdm isian),Dulce de Leche (1 tbsp filling),Condiment,Snack,65,1.0,12.0,1.5
+Kelapa (hiasan parut),Coconut (shredded garnish),Fruit,Snack,10,0.1,0.5,1.0
+Teman (1 cangkir),Mate (1 cup),Beverage,Breakfast,5,0.2,1.0,0.0
+Media Luna (1 kue),Media Luna (1 pastry),Grain,Breakfast,190,4.0,25.0,8.0
+Chimichurri (1 sdm),Chimichurri (1 tbsp),Condiment,Dinner,45,0.1,0.5,4.5
+Rok Steak (4oz panggang),Skirt Steak (4oz grilled),Protein/Meat,Dinner,240,26.0,0.0,15.0
+Provoleta (1 ons keju panggang),Provoleta (1 oz grilled cheese),Dairy,Dinner,100,7.0,1.0,8.0
+Oregano (1 sdt),Oregano (1 tsp),Condiment,Dinner,3,0.1,0.7,0.0
+Empanada (Daging Sapi 1 sedang),Empanada (Beef 1 medium),Meal/Processed,Lunch,290,10.0,28.0,16.0
+Ayam Milanesa (1 porsi),Chicken Milanesa (1 serving),Meal/Meat,Dinner,450,35.0,30.0,22.0
+Kentang Tumbuk (sisi),Mashed Potatoes (side),Vegetable,Dinner,150,3.0,25.0,4.0
+Flan (1 potong),Flan (1 slice),Dessert,Snack,220,6.0,35.0,7.0
+Choripan (1 roti lapis),Choripan (1 sandwich),Meal/Processed,Lunch,550,20.0,40.0,35.0
+Baguette (irisan),Baguette (slice),Grain,Lunch,70,2.5,14.0,0.5
+Chimichurri (1 sdm),Chimichurri (1 tbsp),Condiment,Lunch,45,0.1,0.5,4.5
+Pizza (Margherita 1 potong),Pizza (Margherita 1 slice),Meal/Processed,Dinner,250,12.0,30.0,10.0
+Mozzarella segar (1 ons),Fresh Mozzarella (1 oz),Dairy,Dinner,72,5.0,0.8,5.0
+Kemangi (2 sdm segar),Basil (2 tbsp fresh),Condiment,Dinner,1,0.1,0.1,0.0
+"Carbonara (1,5 cangkir)",Carbonara (1.5 cups),Meal/Pasta,Dinner,650,25.0,60.0,35.0
+Guanciale (1 ons),Guanciale (1 oz),Protein/Meat,Dinner,170,3.0,0.0,18.0
+Keju Pecorino (1 sdm),Pecorino Cheese (1 tbsp),Dairy,Dinner,25,1.5,0.1,2.0
+Lada Hitam (1/4 sdt),Black Pepper (1/4 tsp),Condiment,Dinner,1,0.0,0.2,0.0
+Kuning Telur (1 besar untuk saus),Egg Yolk (1 large in sauce),Protein,Dinner,55,2.7,0.6,4.5
+Supplì (1 potong nasi goreng),Supplì (1 piece fried rice ball),Snack/Processed,Snack,200,8.0,25.0,8.0
+Aperol Spritz (1 minuman),Aperol Spritz (1 drink),Beverage,Snack,180,0.0,20.0,0.0
+Prosecco (3 ons),Prosecco (3 oz),Beverage,Snack,70,0.0,2.0,0.0
+Soda Klub (2 ons),Club Soda (2 oz),Beverage,Snack,0,0.0,0.0,0.0
+Irisan Jeruk (hiasan),Orange Slice (garnish),Fruit,Snack,5,0.1,1.0,0.0
+Tagliatelle al Ragù (Bologna),Tagliatelle al Ragù (Bolognese),Meal/Pasta,Dinner,550,28.0,65.0,20.0
+Daging Sapi Giling (2 ons dalam saus),Ground Beef (2 oz in sauce),Protein/Meat,Dinner,140,11.0,0.0,10.0
+"Pancetta (0,5 ons dalam saus)",Pancetta (0.5 oz in sauce),Protein/Meat,Dinner,45,1.5,0.0,4.5
+Wortel (1/4 dicincang dalam saus),Carrot (1/4 minced in sauce),Vegetable,Dinner,10,0.2,2.4,0.1
+Seledri (1/4 batang cincang),Celery (1/4 stalk minced),Vegetable,Dinner,2,0.1,0.4,0.0
+Bawang bombay (1/8 dicincang dengan saus),Onion (1/8 minced in sauce),Vegetable,Dinner,5,0.1,1.2,0.0
+Tomat Hancur (1/2 cangkir saus),Crushed Tomatoes (1/2 cup sauce),Vegetable,Dinner,20,1.0,4.0,0.0
+Parmigiano-Reggiano (1 sdm),Parmigiano-Reggiano (1 tbsp),Dairy,Dinner,22,2.0,0.2,1.5
+Cannoli (1 sedang),Cannoli (1 medium),Dessert,Snack,240,5.0,25.0,13.0
+Ricotta (isi 1 ons),Ricotta (filling 1 oz),Dairy,Snack,49,3.2,0.8,3.8
+Pistachio (hiasan),Pistachio (garnish),Nut,Snack,10,0.4,0.5,0.8
+Biscotti (1 kue),Biscotti (1 cookie),Dessert,Snack,110,2.0,18.0,4.0
+Espresso (untuk dicelupkan),Espresso (for dipping),Beverage,Snack,2,0.2,0.0,0.0
+Focaccia (1 kotak),Focaccia (1 square),Grain,Lunch,250,8.0,40.0,7.0
+Rosemary (1 sdt topping),Rosemary (1 tsp topping),Condiment,Lunch,1,0.0,0.2,0.0
+Garam Kasar (hiasan),Coarse Salt (garnish),Condiment,Lunch,0,0.0,0.0,0.0
+Minyak Zaitun (1 sdm gerimis),Olive Oil (1 tbsp drizzle),Condiment,Lunch,120,0.0,0.0,14.0
+Bruschetta (2 buah),Bruschetta (2 pcs),Snack/Appetizer,Snack,180,4.0,25.0,7.0
+Glasir Balsamic (1 sdt),Balsamic Glaze (1 tsp),Condiment,Snack,13,0.0,3.0,0.0
+"Ribollita (1,5 cangkir sup)",Ribollita (1.5 cups soup),Meal/Soup,Dinner,350,15.0,55.0,8.0
+Kacang Cannellini (1/2 cangkir dalam sup),Cannellini Beans (1/2 cup in soup),Legume,Dinner,105,7.0,20.0,0.5
+Kangkung (1 cangkir dalam sup),Kale (1 cup in soup),Vegetable,Dinner,33,2.9,6.0,0.6
+Roti Basi (1/2 cangkir dalam sup),Stale Bread (1/2 cup in soup),Grain,Dinner,80,3.0,15.0,1.0
+Polenta (1 cangkir krim),Polenta (1 cup creamy),Meal/Grain,Dinner,150,3.0,32.0,1.0
+Keju Gorgonzola (1 ons),Gorgonzola Cheese (1 oz),Dairy,Dinner,100,6.0,0.7,8.0
+Negroni (1 minuman),Negroni (1 drink),Beverage,Snack,190,0.0,15.0,0.0
+Gin (1 ons),Gin (1 oz),Beverage,Snack,70,0.0,0.0,0.0
+Campari (1 ons),Campari (1 oz),Beverage,Snack,80,0.0,10.0,0.0
+Vermouth Manis (1 ons),Sweet Vermouth (1 oz),Beverage,Snack,40,0.0,5.0,0.0
+Kulit Jeruk (hiasan),Orange Peel (garnish),Condiment,Snack,1,0.0,0.2,0.0
+Osso Buco (1 porsi),Osso Buco (1 serving),Meal/Meat,Dinner,550,45.0,15.0,30.0
+Gremolata (1 sdm),Gremolata (1 tbsp),Condiment,Dinner,15,0.5,1.0,1.0
+Risotto alla Milanese (1 cangkir),Risotto alla Milanese (1 cup),Meal/Rice,Dinner,350,10.0,50.0,12.0
+Saffron (sejumput di risotto),Saffron (pinch in risotto),Condiment,Dinner,1,0.0,0.1,0.0
+Panetton (1 potong),Panettone (1 slice),Dessert,Snack,320,6.0,50.0,12.0
+Manisan Buah (1 sdm),Candied Fruit (1 tbsp),Fruit,Snack,30,0.0,8.0,0.0
+Kue Amaretti (2 kue),Amaretti Cookie (2 cookies),Dessert,Snack,90,2.0,12.0,4.0
+"Limoncello (suntikan 1,5 ons)",Limoncello (1.5 oz shot),Beverage,Snack,150,0.0,18.0,0.0
+Panna Cotta (1 porsi),Panna Cotta (1 serving),Dessert,Snack,300,4.0,25.0,20.0
+Berry Coulis (1 sdm),Berry Coulis (1 tbsp),Condiment,Snack,20,0.0,5.0,0.0
+Saltimbocca (1 porsi),Saltimbocca (1 serving),Meal/Meat,Dinner,380,38.0,5.0,22.0
+Prosciutto (1 potong bungkus),Prosciutto (1 slice wrapper),Protein/Meat,Dinner,35,4.0,0.0,2.5
+Sage (2 daun),Sage (2 leaves),Condiment,Dinner,1,0.0,0.1,0.0
+Saus Anggur Putih (1/4 cangkir),White Wine Sauce (1/4 cup),Condiment,Dinner,80,1.0,4.0,6.0
+Polenta (panggang 1 potong),Polenta (grilled 1 slice),Meal/Grain,Dinner,120,2.5,25.0,1.0
+Caponata (1/2 cangkir),Caponata (1/2 cup),Meal/Vegetable,Dinner,180,2.0,15.0,14.0
+Terong (1/2 cangkir dalam caponata),Eggplant (1/2 cup in caponata),Vegetable,Dinner,40,0.5,6.0,2.0
+Kacang Pinus (1/2 sdm),Pine Nuts (1/2 tbsp),Nut,Dinner,48,1.0,1.0,5.0
+Kismis (1 sdm),Raisins (1 tbsp),Fruit,Dinner,27,0.3,7.0,0.0
+Gelato (Pistachio 1/2 cangkir),Gelato (Pistachio 1/2 cup),Dessert,Snack,220,5.0,24.0,12.0
+Kerucut Wafel (1 kecil),Waffle Cone (1 small),Grain,Snack,70,1.0,13.0,1.5
+"Cacio e Pepe (1,5 cangkir)",Cacio e Pepe (1.5 cups),Meal/Pasta,Dinner,500,18.0,65.0,19.0
+Pecorino Romano (1/4 cangkir),Pecorino Romano (1/4 cup),Dairy,Dinner,110,7.5,1.0,8.5
+Lada Hitam (1/2 sdt),Black Pepper (1/2 tsp),Condiment,Dinner,3,0.1,0.7,0.0
+Steak Fiorentina (porsi 3oz),Fiorentina Steak (3oz portion),Protein/Meat,Dinner,230,24.0,0.0,15.0
+Minyak Zaitun (1 sdm gerimis),Olive Oil (1 tbsp drizzle),Condiment,Dinner,120,0.0,0.0,14.0
+Rosemary (hiasan),Rosemary (garnish),Condiment,Dinner,1,0.0,0.2,0.0
+Kacang Putih (gaya Tuscan 1/2 cangkir),White Beans (Tuscan style 1/2 cup),Legume,Dinner,150,8.0,20.0,4.0
+Bawang putih (1 siung dalam kacang),Garlic (1 clove in beans),Vegetable,Dinner,4,0.2,0.9,0.0
+Sage (dalam kacang),Sage (in beans),Condiment,Dinner,1,0.0,0.1,0.0
+Arancini (1 bola besar),Arancini (1 large ball),Snack/Processed,Snack,250,9.0,30.0,10.0
+Ragù (isi 1 sdm),Ragù (filling 1 tbsp),Condiment,Snack,25,1.5,1.0,1.5
+"Mozzarella (isi 0,5 ons)",Mozzarella (filling 0.5 oz),Dairy,Snack,40,3.0,0.5,3.0
+Remah roti (pelapis),Breadcrumbs (coating),Grain,Snack,25,0.5,4.0,0.5
+Campari & Soda (1 minuman),Campari & Soda (1 drink),Beverage,Snack,85,0.0,10.0,0.0
+Zaitun (hiasan),Olive (garnish),Fruit,Snack,5,0.0,0.1,0.5
+Vitello Tonnato (1 porsi),Vitello Tonnato (1 serving),Meal/Meat,Lunch,380,35.0,3.0,25.0
+Saus Tuna (2 sdm),Tuna Sauce (2 tbsp),Condiment,Lunch,100,4.0,1.0,9.0
+Caper (hiasan),Capers (garnish),Condiment,Lunch,2,0.2,0.4,0.1
+Irisan Lemon (hiasan),Lemon Slice (garnish),Condiment,Lunch,1,0.0,0.3,0.0
+"Gnocchi alla Sorrentina (1,5 cangkir)",Gnocchi alla Sorrentina (1.5 cups),Meal/Pasta,Dinner,450,15.0,60.0,18.0
+Saus Tomat (1/2 cangkir),Tomato Sauce (1/2 cup),Condiment,Dinner,40,1.5,7.0,1.0
+Mozzarella (1 ons meleleh),Mozzarella (1 oz melted),Dairy,Dinner,80,6.0,1.0,6.0
+Kemangi (hiasan segar),Basil (fresh garnish),Condiment,Dinner,1,0.1,0.0,0.0
+Parmigiano-Reggiano (1 sdm),Parmigiano-Reggiano (1 tbsp),Dairy,Dinner,22,2.0,0.2,1.5
+Pesto (1/4 cangkir),Pesto (1/4 cup),Condiment,Dinner,290,5.0,4.0,29.0
+Kacang Pinus (1 sdm dalam pesto),Pine Nuts (1 tbsp in pesto),Nut,Dinner,95,2.0,2.0,10.0
+Bawang putih (1/2 siung dalam pesto),Garlic (1/2 clove in pesto),Vegetable,Dinner,2,0.1,0.5,0.0
+Trofie Pasta (1 cangkir dimasak),Trofie Pasta (1 cup cooked),Grain,Dinner,210,7.0,43.0,1.0
+Kacang Hijau (1/2 cangkir dengan pasta),Green Beans (1/2 cup w/ pasta),Vegetable,Dinner,15,0.9,3.5,0.1
+Kentang (1/2 w/ pasta),Potato (1/2 w/ pasta),Vegetable,Dinner,65,1.0,15.0,0.1
+Espresso Martini (1 minuman),Espresso Martini (1 drink),Beverage,Snack,280,0.5,25.0,0.0
+"Vodka (1,5 ons)",Vodka (1.5 oz),Beverage,Snack,97,0.0,0.0,0.0
+Minuman Keras Kopi (1 ons),Coffee Liqueur (1 oz),Beverage,Snack,100,0.0,15.0,0.0
+Espresso (1 ons minuman),Espresso (1 oz in drink),Beverage,Snack,3,0.3,0.0,0.1
+Sirup Sederhana (1/2 ons),Simple Syrup (1/2 oz),Condiment,Snack,30,0.0,8.0,0.0
+Biji Kopi (3 hiasan),Coffee Beans (3 garnish),Snack,Snack,2,0.1,0.3,0.0
+Baba Ganoush (1/4 cangkir),Baba Ganoush (1/4 cup),Meal/Vegetable,Snack,100,2.0,8.0,7.0
+Roti Pita (1 putih),Pita Bread (1 white),Grain,Snack,165,5.5,33.0,1.2
+Falafel (3 buah),Falafel (3 pieces),Meal/Vegetarian,Lunch,180,6.0,18.0,9.0
+Saus Tahini (1 sdm),Tahini Sauce (1 tbsp),Condiment,Lunch,30,1.0,1.5,2.5
+Acar Lobak (2 sdm),Pickled Turnips (2 tbsp),Vegetable,Lunch,10,0.2,2.0,0.0
+Shawarma (Ayam 1 bungkus),Shawarma (Chicken 1 wrap),Meal/Processed,Lunch,550,30.0,50.0,25.0
+Saus Bawang Putih (1 sdm),Garlic Sauce (1 tbsp),Condiment,Lunch,90,0.1,1.0,10.0
+Hummus (1/4 cangkir),Hummus (1/4 cup),Legume,Lunch,130,5.0,10.0,8.0
+Tabouli (1/2 cangkir),Tabouli (1/2 cup),Meal/Vegetarian,Lunch,120,3.0,15.0,6.0
+Bulgur (1/4 cangkir dalam tabouli),Bulgur (1/4 cup in tabouli),Grain,Lunch,76,2.7,16.8,0.2
+Peterseli (1/4 cangkir dalam tabouli),Parsley (1/4 cup in tabouli),Vegetable,Lunch,5,0.3,1.0,0.1
+Mint (1 sdm dalam tabouli),Mint (1 tbsp in tabouli),Condiment,Lunch,1,0.1,0.1,0.0
+Jus Lemon (1 sdm saus),Lemon Juice (1 tbsp dressing),Condiment,Lunch,4,0.1,1.3,0.0
+Minyak Zaitun (1 sdm saus),Olive Oil (1 tbsp dressing),Condiment,Lunch,120,0.0,0.0,14.0
+Kibbeh (goreng 1 potong),Kibbeh (1 piece fried),Meal/Meat,Snack,230,9.0,20.0,13.0
+Kacang Pinus (1/2 sdm isian),Pine Nuts (1/2 tbsp filling),Nut,Snack,48,1.0,1.0,5.0
+Daging Domba Giling (isian 1 ons),Ground Lamb (1 oz filling),Protein/Meat,Snack,80,5.5,0.0,6.0
+Bulgur (1 sdm cangkang),Bulgur (1 tbsp shell),Grain,Snack,15,0.5,3.4,0.0
+Sup Lentil (1 cangkir Timur Tengah),Lentil Soup (1 cup Middle Eastern),Meal/Legume,Lunch,200,10.0,30.0,5.0
+Jinten (1 sdt),Cumin (1 tsp),Condiment,Lunch,8,0.3,1.5,0.5
+Ketumbar (1 sdt),Coriander (1 tsp),Condiment,Lunch,5,0.1,1.0,0.2
+Jus Lemon (1 sdt dalam sup),Lemon Juice (1 tsp in soup),Condiment,Lunch,1,0.0,0.4,0.0
+Keripik Pita (1 ons),Pita Crisps (1 oz),Snack/Processed,Lunch,130,3.0,18.0,5.0
+Manakeesh (Za'atar 1 kecil),Manakeesh (Za'atar 1 small),Meal/Vegetarian,Breakfast,300,7.0,45.0,10.0
+Za'atar (1 sdm),Za'atar (1 tbsp),Condiment,Breakfast,40,1.0,3.0,3.0
+Minyak Zaitun (1 sdm pada roti),Olive Oil (1 tbsp on bread),Condiment,Breakfast,120,0.0,0.0,14.0
+Labneh (2 sdm),Labneh (2 tbsp),Dairy,Breakfast,60,4.0,2.0,4.0
+Mentimun (1/4 cangkir sisi),Cucumber (1/4 cup side),Vegetable,Breakfast,8,0.3,1.8,0.0
+Tomat (1/4 cangkir sisi),Tomato (1/4 cup side),Vegetable,Breakfast,8,0.3,1.8,0.1
+Zaitun (5 sisi),Olives (5 side),Fruit,Breakfast,35,0.2,1.0,3.5
+Teh Mint (1 cangkir),Mint Tea (1 cup),Beverage,Breakfast,2,0.1,0.5,0.0
+Daun Anggur Isi (3 pcs),Stuffed Grape Leaves (3 pcs),Meal/Vegetarian,Snack,150,3.0,20.0,7.0
+Nasi (isian 1/4 cangkir),Rice (1/4 cup filling),Grain,Snack,51,1.1,11.1,0.1
+Kopi Turki (1 cangkir kecil),Turkish Coffee (1 small cup),Beverage,Snack,5,0.2,0.5,0.0
+Kapulaga (dalam kopi),Cardamom (in coffee),Condiment,Snack,1,0.0,0.2,0.0
+Shish Tawook (2 tusuk sate),Shish Tawook (2 skewers),Meal/Meat,Dinner,300,35.0,5.0,16.0
+Saus Bawang Putih (Toum 1 sdm),Garlic Sauce (Toum 1 tbsp),Condiment,Dinner,90,0.1,1.0,10.0
+Kentang Goreng (sisi),French Fries (side),Vegetable/Processed,Dinner,340,4.0,44.0,17.0
+Acar Mentimun (1/4 cangkir),Pickled Cucumber (1/4 cup),Vegetable,Dinner,10,0.5,2.0,0.0
+"Salad Fattoush (1,5 cangkir)",Fattoush Salad (1.5 cups),Meal/Vegetarian,Lunch,250,5.0,25.0,15.0
+Pita Goreng (1/2 pita dalam salad),Fried Pita (1/2 pita in salad),Grain,Lunch,80,2.0,12.0,3.0
+Sumac (1/2 sdt saus),Sumac (1/2 tsp dressing),Condiment,Lunch,5,0.1,1.0,0.2
+Molase Delima (1 sdt),Pomegranate Molasses (1 tsp),Condiment,Lunch,15,0.0,4.0,0.0

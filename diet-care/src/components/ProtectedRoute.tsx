@@ -1,5 +1,5 @@
 ﻿import { Navigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type JSX } from "react";
 
 import { useAuth } from "../hooks/useAuth";
 import { getMe, refreshSession } from "../services/auth.service";

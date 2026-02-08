@@ -31,6 +31,7 @@ enum MealType {
   LUNCH
   DINNER
   SNACK
+  SIDE
 }
 
 enum PlanType {
@@ -92,10 +93,13 @@ model UserProfile {
 model Food {
   id                String             @id @default(uuid())
   name              String
-  caloriesPer100g   Float?
-  proteinPer100g    Float?
-  carbsPer100g      Float?
-  fatPer100g        Float?
+  nameEn            String?
+  mealType          MealType?
+  servingLabel      String?
+  calories          Float?
+  protein           Float?
+  carbs             Float?
+  fat               Float?
   category          String?
 
   dietPlanMeals     DietPlanMeal[]
@@ -223,7 +227,7 @@ model NutritionDocument {
   chapter   String?
   topic     String?
   language  String?
-  embedding Unsupported("vector(768)")
+  embedding Unsupported("vector(3072)")
   source    String?
   createdAt DateTime @default(now())
 }
@@ -232,6 +236,6 @@ model QueryEmbeddingCache {
   id        String   @id @default(uuid())
   queryHash String   @unique
   queryText String
-  embedding Unsupported("vector(768)")
+  embedding Unsupported("vector(3072)")
   createdAt DateTime @default(now())
 }

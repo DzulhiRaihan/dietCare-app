@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx watch src/server.ts",
     "rag:cleanup": "tsx src/rag/cleanup-cache.ts",
+    "import:foods": "tsx src/scripts/import-foods.ts",
     "postinstall": "prisma generate"
   },
   "keywords": [],
